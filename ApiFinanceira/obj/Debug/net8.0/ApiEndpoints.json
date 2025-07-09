@@ -93,6 +93,109 @@
     ]
   },
   {
+    "ContainingType": "ApiFinanceira.Controllers.TransactionsController",
+    "Method": "CreateTransaction",
+    "RelativePath": "api/accounts/{accountId}/transactions",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "ApiFinanceira.Application.DTOs.Requests.CreateTransacaoRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ApiFinanceira.Application.DTOs.Responses.TransacaoResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ApiFinanceira.Controllers.TransactionsController",
+    "Method": "GetTransactions",
+    "RelativePath": "api/accounts/{accountId}/transactions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "itemsPerPage",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "currentPage",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "type",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ApiFinanceira.Application.DTOs.Responses.PagedTransacaoResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ApiFinanceira.Controllers.TransactionsController",
+    "Method": "CreateInternalTransfer",
+    "RelativePath": "api/accounts/{accountId}/transactions/internal",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "ApiFinanceira.Application.DTOs.Requests.CreateTransferenciaRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ApiFinanceira.Application.DTOs.Responses.TransacaoResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "ApiFinanceira.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/Auth/login",

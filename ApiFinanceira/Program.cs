@@ -30,6 +30,7 @@ builder.Services.AddScoped<IContaRepository, ContaRepository>();
 builder.Services.AddScoped<IPessoaService, PessoaService>();
 builder.Services.AddScoped<IContaService, ContaService>();
 builder.Services.AddScoped<ICartaoService, CartaoService>();
+builder.Services.AddScoped<ITransacaoService, TransacaoService>();
 builder.Services.AddHttpClient<IComplianceService, ComplianceService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 

@@ -7,6 +7,8 @@ namespace ApiFinanceira.Domain.Entities
 {
     public class Conta
     {
+        
+
         public Guid Id { get; set; }
         public Guid PessoaId { get; set; }
         public string Branch { get; set; }

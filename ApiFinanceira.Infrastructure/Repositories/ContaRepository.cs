@@ -35,5 +35,12 @@ namespace ApiFinanceira.Infrastructure.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public async Task UpdateAsync(Conta entity)
+        {
+            entity.UpdatedAt = DateTime.UtcNow;
+            _dbSet.Update(entity);            
+            await Task.CompletedTask;
+        }
     }
 }

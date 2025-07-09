@@ -3,8 +3,79 @@
   "WorkspaceRootPath": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{62B517BE-B0C1-4540-8B8E-51390C864434}|..\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.application\\services\\transacaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20ADFFCD-7A37-4801-B3AF-1B4208BCA2D1}|..\\ApiFinanceira.Domain\\ApiFinanceira.Domain.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.domain\\entities\\transacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62B517BE-B0C1-4540-8B8E-51390C864434}|..\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.application\\dtos\\requests\\createcartaorequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62B517BE-B0C1-4540-8B8E-51390C864434}|..\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.application\\services\\pessoaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{767A48D9-2D4E-4FE0-A188-1BF97B4C3525}|ApiFinanceira.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira\\controllers\\pessoacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{767A48D9-2D4E-4FE0-A188-1BF97B4C3525}|ApiFinanceira.csproj|solutionrelative:controllers\\pessoacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{767A48D9-2D4E-4FE0-A188-1BF97B4C3525}|ApiFinanceira.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira\\controllers\\contacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{767A48D9-2D4E-4FE0-A188-1BF97B4C3525}|ApiFinanceira.csproj|solutionrelative:controllers\\contacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20ADFFCD-7A37-4801-B3AF-1B4208BCA2D1}|..\\ApiFinanceira.Domain\\ApiFinanceira.Domain.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.domain\\interfaces\\itransacaorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88CD8A5A-EC6F-4789-9D64-449056E193B1}|..\\ApiFinanceira.Infrastructure\\ApiFinanceira.Infrastructure.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.infrastructure\\migrations\\20250709143247_addtransactionsandbalancefunctionality.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20ADFFCD-7A37-4801-B3AF-1B4208BCA2D1}|..\\ApiFinanceira.Domain\\ApiFinanceira.Domain.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.domain\\interfaces\\ipessoarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62B517BE-B0C1-4540-8B8E-51390C864434}|..\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.application\\services\\itransacaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88CD8A5A-EC6F-4789-9D64-449056E193B1}|..\\ApiFinanceira.Infrastructure\\ApiFinanceira.Infrastructure.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.infrastructure\\repositories\\transacaorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{767A48D9-2D4E-4FE0-A188-1BF97B4C3525}|ApiFinanceira.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{767A48D9-2D4E-4FE0-A188-1BF97B4C3525}|ApiFinanceira.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{767A48D9-2D4E-4FE0-A188-1BF97B4C3525}|ApiFinanceira.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira\\controllers\\transactionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{767A48D9-2D4E-4FE0-A188-1BF97B4C3525}|ApiFinanceira.csproj|solutionrelative:controllers\\transactionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88CD8A5A-EC6F-4789-9D64-449056E193B1}|..\\ApiFinanceira.Infrastructure\\ApiFinanceira.Infrastructure.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.infrastructure\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62B517BE-B0C1-4540-8B8E-51390C864434}|..\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.application\\dtos\\responses\\pagedtransacaoresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62B517BE-B0C1-4540-8B8E-51390C864434}|..\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.application\\dtos\\responses\\transacaoresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62B517BE-B0C1-4540-8B8E-51390C864434}|..\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.application\\dtos\\requests\\createtransferenciarequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62B517BE-B0C1-4540-8B8E-51390C864434}|..\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.application\\dtos\\requests\\createtransacaorequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88CD8A5A-EC6F-4789-9D64-449056E193B1}|..\\ApiFinanceira.Infrastructure\\ApiFinanceira.Infrastructure.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.infrastructure\\repositories\\contarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20ADFFCD-7A37-4801-B3AF-1B4208BCA2D1}|..\\ApiFinanceira.Domain\\ApiFinanceira.Domain.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.domain\\interfaces\\icontarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{20ADFFCD-7A37-4801-B3AF-1B4208BCA2D1}|..\\ApiFinanceira.Domain\\ApiFinanceira.Domain.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.domain\\entities\\conta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{767A48D9-2D4E-4FE0-A188-1BF97B4C3525}|ApiFinanceira.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira\\controllers\\cartaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{767A48D9-2D4E-4FE0-A188-1BF97B4C3525}|ApiFinanceira.csproj|solutionrelative:controllers\\cartaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{767A48D9-2D4E-4FE0-A188-1BF97B4C3525}|ApiFinanceira.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{767A48D9-2D4E-4FE0-A188-1BF97B4C3525}|ApiFinanceira.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62B517BE-B0C1-4540-8B8E-51390C864434}|..\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.application\\dtos\\responses\\cartaoresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -19,43 +90,19 @@
       "AbsoluteMoniker": "D:0:0:{62B517BE-B0C1-4540-8B8E-51390C864434}|..\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.application\\dtos\\responses\\paginationinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62B517BE-B0C1-4540-8B8E-51390C864434}|..\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.application\\dtos\\requests\\createcartaorequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{20ADFFCD-7A37-4801-B3AF-1B4208BCA2D1}|..\\ApiFinanceira.Domain\\ApiFinanceira.Domain.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.domain\\interfaces\\icartaorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62B517BE-B0C1-4540-8B8E-51390C864434}|..\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.application\\dtos\\responses\\pagedcardresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62B517BE-B0C1-4540-8B8E-51390C864434}|..\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.application\\services\\pessoaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{767A48D9-2D4E-4FE0-A188-1BF97B4C3525}|ApiFinanceira.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira\\controllers\\pessoacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{767A48D9-2D4E-4FE0-A188-1BF97B4C3525}|ApiFinanceira.csproj|solutionrelative:controllers\\pessoacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{62B517BE-B0C1-4540-8B8E-51390C864434}|..\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.application\\services\\icartaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20ADFFCD-7A37-4801-B3AF-1B4208BCA2D1}|..\\ApiFinanceira.Domain\\ApiFinanceira.Domain.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.domain\\entities\\conta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{20ADFFCD-7A37-4801-B3AF-1B4208BCA2D1}|..\\ApiFinanceira.Domain\\ApiFinanceira.Domain.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.domain\\entities\\cartao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{767A48D9-2D4E-4FE0-A188-1BF97B4C3525}|ApiFinanceira.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{767A48D9-2D4E-4FE0-A188-1BF97B4C3525}|ApiFinanceira.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88CD8A5A-EC6F-4789-9D64-449056E193B1}|..\\ApiFinanceira.Infrastructure\\ApiFinanceira.Infrastructure.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.infrastructure\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{20ADFFCD-7A37-4801-B3AF-1B4208BCA2D1}|..\\ApiFinanceira.Domain\\ApiFinanceira.Domain.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira.domain\\entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{767A48D9-2D4E-4FE0-A188-1BF97B4C3525}|ApiFinanceira.csproj|c:\\users\\felip\\onedrive\\\u00E1rea de trabalho\\aa\\apifinanceira\\apifinanceira\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{767A48D9-2D4E-4FE0-A188-1BF97B4C3525}|ApiFinanceira.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Requests\\CreateContaRequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -107,140 +154,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CreateCartaoRequest.cs",
-              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Requests\\CreateCartaoRequest.cs",
-              "RelativeDocumentMoniker": "..\\ApiFinanceira.Application\\DTOs\\Requests\\CreateCartaoRequest.cs",
-              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Requests\\CreateCartaoRequest.cs",
-              "RelativeToolTip": "..\\ApiFinanceira.Application\\DTOs\\Requests\\CreateCartaoRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAASwA8AAABGAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "ITransacaoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\Interfaces\\ITransacaoRepository.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Domain\\Interfaces\\ITransacaoRepository.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\Interfaces\\ITransacaoRepository.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Domain\\Interfaces\\ITransacaoRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T05:27:15.286Z",
+              "WhenOpened": "2025-07-09T13:54:12.821Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CartaoRepository.cs",
-              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Infrastructure\\Repositories\\CartaoRepository.cs",
-              "RelativeDocumentMoniker": "..\\ApiFinanceira.Infrastructure\\Repositories\\CartaoRepository.cs",
-              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Infrastructure\\Repositories\\CartaoRepository.cs",
-              "RelativeToolTip": "..\\ApiFinanceira.Infrastructure\\Repositories\\CartaoRepository.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAAACAAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T04:54:33.417Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 13,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Infrastructure\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "..\\ApiFinanceira.Infrastructure\\Data\\ApplicationDbContext.cs",
               "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Infrastructure\\Data\\ApplicationDbContext.cs",
               "RelativeToolTip": "..\\ApiFinanceira.Infrastructure\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAAmwE8AAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAwwFgAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T04:52:19.403Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ICartaoRepository.cs",
-              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\Interfaces\\ICartaoRepository.cs",
-              "RelativeDocumentMoniker": "..\\ApiFinanceira.Domain\\Interfaces\\ICartaoRepository.cs",
-              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\Interfaces\\ICartaoRepository.cs",
-              "RelativeToolTip": "..\\ApiFinanceira.Domain\\Interfaces\\ICartaoRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBAAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T04:53:37.807Z",
+              "WhenOpened": "2025-07-09T04:52:19.403Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PagedCardResponse.cs",
-              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Responses\\PagedCardResponse.cs",
-              "RelativeDocumentMoniker": "..\\ApiFinanceira.Application\\DTOs\\Responses\\PagedCardResponse.cs",
-              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Responses\\PagedCardResponse.cs",
-              "RelativeToolTip": "..\\ApiFinanceira.Application\\DTOs\\Responses\\PagedCardResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACAAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T05:46:55.277Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CartaoService.cs",
-              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\Services\\CartaoService.cs",
-              "RelativeDocumentMoniker": "..\\ApiFinanceira.Application\\Services\\CartaoService.cs",
-              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\Services\\CartaoService.cs",
-              "RelativeToolTip": "..\\ApiFinanceira.Application\\Services\\CartaoService.cs",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAgwFQAAABMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T05:29:11.132Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PaginationInfo.cs",
-              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Responses\\PaginationInfo.cs",
-              "RelativeDocumentMoniker": "..\\ApiFinanceira.Application\\DTOs\\Responses\\PaginationInfo.cs",
-              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Responses\\PaginationInfo.cs",
-              "RelativeToolTip": "..\\ApiFinanceira.Application\\DTOs\\Responses\\PaginationInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T05:46:00.107Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CartaoController.cs",
-              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira\\Controllers\\CartaoController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CartaoController.cs",
-              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira\\Controllers\\CartaoController.cs",
-              "RelativeToolTip": "Controllers\\CartaoController.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAwwEQAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T12:23:44.831Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CartaoResponse.cs",
-              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Responses\\CartaoResponse.cs",
-              "RelativeDocumentMoniker": "..\\ApiFinanceira.Application\\DTOs\\Responses\\CartaoResponse.cs",
-              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Responses\\CartaoResponse.cs",
-              "RelativeToolTip": "..\\ApiFinanceira.Application\\DTOs\\Responses\\CartaoResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T05:27:44.101Z",
+              "WhenOpened": "2025-07-09T01:34:10.205Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "PessoaService.cs",
-              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\Services\\PessoaService.cs",
-              "RelativeDocumentMoniker": "..\\ApiFinanceira.Application\\Services\\PessoaService.cs",
-              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\Services\\PessoaService.cs",
-              "RelativeToolTip": "..\\ApiFinanceira.Application\\Services\\PessoaService.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAgwCcAAAAPAAAAAAAAAA==",
+              "Title": "IPessoaRepository.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\Interfaces\\IPessoaRepository.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Domain\\Interfaces\\IPessoaRepository.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\Interfaces\\IPessoaRepository.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Domain\\Interfaces\\IPessoaRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T12:27:32.434Z",
+              "WhenOpened": "2025-07-09T14:08:42.371Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 4,
               "Title": "PessoaController.cs",
               "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira\\Controllers\\PessoaController.cs",
               "RelativeDocumentMoniker": "Controllers\\PessoaController.cs",
@@ -253,7 +223,319 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PessoaService.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\Services\\PessoaService.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Application\\Services\\PessoaService.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\Services\\PessoaService.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Application\\Services\\PessoaService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAiwCcAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T12:27:32.434Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CreateCartaoRequest.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Requests\\CreateCartaoRequest.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Application\\DTOs\\Requests\\CreateCartaoRequest.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Requests\\CreateCartaoRequest.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Application\\DTOs\\Requests\\CreateCartaoRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAASwBAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T05:27:15.286Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Transacao.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\Entities\\Transacao.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Domain\\Entities\\Transacao.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\Entities\\Transacao.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Domain\\Entities\\Transacao.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T13:50:48.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TransacaoService.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\Services\\TransacaoService.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Application\\Services\\TransacaoService.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\Services\\TransacaoService.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Application\\Services\\TransacaoService.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAwwGMAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T13:59:45.875Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 10,
+              "Title": "TransacaoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Infrastructure\\Repositories\\TransacaoRepository.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Infrastructure\\Repositories\\TransacaoRepository.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Infrastructure\\Repositories\\TransacaoRepository.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Infrastructure\\Repositories\\TransacaoRepository.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAUwGkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T13:55:04.684Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ContaController.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira\\Controllers\\ContaController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ContaController.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira\\Controllers\\ContaController.cs",
+              "RelativeToolTip": "Controllers\\ContaController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowCsAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T14:39:09.562Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ITransacaoService.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\Services\\ITransacaoService.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Application\\Services\\ITransacaoService.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\Services\\ITransacaoService.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Application\\Services\\ITransacaoService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAwAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T13:59:28.909Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "TransactionsController.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira\\Controllers\\TransactionsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TransactionsController.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira\\Controllers\\TransactionsController.cs",
+              "RelativeToolTip": "Controllers\\TransactionsController.cs",
+              "ViewState": "AgIAAHwAAAAAAAAAAAAcwIYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T14:26:01.606Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "20250709143247_AddTransactionsAndBalanceFunctionality.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Infrastructure\\Migrations\\20250709143247_AddTransactionsAndBalanceFunctionality.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Infrastructure\\Migrations\\20250709143247_AddTransactionsAndBalanceFunctionality.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Infrastructure\\Migrations\\20250709143247_AddTransactionsAndBalanceFunctionality.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Infrastructure\\Migrations\\20250709143247_AddTransactionsAndBalanceFunctionality.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T14:32:48.067Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "PagedTransacaoResponse.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Responses\\PagedTransacaoResponse.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Application\\DTOs\\Responses\\PagedTransacaoResponse.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Responses\\PagedTransacaoResponse.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Application\\DTOs\\Responses\\PagedTransacaoResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T14:20:25.972Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "CreateTransferenciaRequest.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Requests\\CreateTransferenciaRequest.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Application\\DTOs\\Requests\\CreateTransferenciaRequest.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Requests\\CreateTransferenciaRequest.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Application\\DTOs\\Requests\\CreateTransferenciaRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T14:19:30.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ContaRepository.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Infrastructure\\Repositories\\ContaRepository.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Infrastructure\\Repositories\\ContaRepository.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Infrastructure\\Repositories\\ContaRepository.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Infrastructure\\Repositories\\ContaRepository.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAvwCkAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T14:03:19.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "IContaRepository.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\Interfaces\\IContaRepository.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Domain\\Interfaces\\IContaRepository.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\Interfaces\\IContaRepository.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Domain\\Interfaces\\IContaRepository.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAMwA4AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T14:03:35.613Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "TransacaoResponse.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Responses\\TransacaoResponse.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Application\\DTOs\\Responses\\TransacaoResponse.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Responses\\TransacaoResponse.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Application\\DTOs\\Responses\\TransacaoResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T13:53:45.654Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "CreateTransacaoRequest.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Requests\\CreateTransacaoRequest.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Application\\DTOs\\Requests\\CreateTransacaoRequest.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Requests\\CreateTransacaoRequest.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Application\\DTOs\\Requests\\CreateTransacaoRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T13:53:19.029Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Conta.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\Entities\\Conta.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Domain\\Entities\\Conta.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\Entities\\Conta.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Domain\\Entities\\Conta.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T12:16:41.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "ICartaoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\Interfaces\\ICartaoRepository.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Domain\\Interfaces\\ICartaoRepository.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\Interfaces\\ICartaoRepository.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Domain\\Interfaces\\ICartaoRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBAAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T04:53:37.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "PagedCardResponse.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Responses\\PagedCardResponse.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Application\\DTOs\\Responses\\PagedCardResponse.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Responses\\PagedCardResponse.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Application\\DTOs\\Responses\\PagedCardResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T05:46:55.277Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "CartaoService.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\Services\\CartaoService.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Application\\Services\\CartaoService.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\Services\\CartaoService.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Application\\Services\\CartaoService.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAgwFQAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T05:29:11.132Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "PaginationInfo.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Responses\\PaginationInfo.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Application\\DTOs\\Responses\\PaginationInfo.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Responses\\PaginationInfo.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Application\\DTOs\\Responses\\PaginationInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T05:46:00.107Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "CartaoController.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira\\Controllers\\CartaoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CartaoController.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira\\Controllers\\CartaoController.cs",
+              "RelativeToolTip": "Controllers\\CartaoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T12:23:44.831Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "CartaoResponse.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Responses\\CartaoResponse.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Application\\DTOs\\Responses\\CartaoResponse.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Responses\\CartaoResponse.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Application\\DTOs\\Responses\\CartaoResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T05:27:44.101Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-09T01:45:42.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "CartaoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Infrastructure\\Repositories\\CartaoRepository.cs",
+              "RelativeDocumentMoniker": "..\\ApiFinanceira.Infrastructure\\Repositories\\CartaoRepository.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Infrastructure\\Repositories\\CartaoRepository.cs",
+              "RelativeToolTip": "..\\ApiFinanceira.Infrastructure\\Repositories\\CartaoRepository.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAAACAAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T04:54:33.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
               "Title": "ICartaoService.cs",
               "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\Services\\ICartaoService.cs",
               "RelativeDocumentMoniker": "..\\ApiFinanceira.Application\\Services\\ICartaoService.cs",
@@ -266,20 +548,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Conta.cs",
-              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\Entities\\Conta.cs",
-              "RelativeDocumentMoniker": "..\\ApiFinanceira.Domain\\Entities\\Conta.cs",
-              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\Entities\\Conta.cs",
-              "RelativeToolTip": "..\\ApiFinanceira.Domain\\Entities\\Conta.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAA9wBUAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T12:16:41.987Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 30,
               "Title": "Cartao.cs",
               "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\Entities\\Cartao.cs",
               "RelativeDocumentMoniker": "..\\ApiFinanceira.Domain\\Entities\\Cartao.cs",
@@ -292,20 +561,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABTAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T01:34:10.205Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 31,
               "Title": "BaseEntity.cs",
               "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\Entities\\BaseEntity.cs",
               "RelativeDocumentMoniker": "..\\ApiFinanceira.Domain\\Entities\\BaseEntity.cs",
@@ -317,7 +573,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 32,
               "Title": "CreateContaRequest.cs",
               "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Requests\\CreateContaRequest.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Requests\\CreateContaRequest.cs",
@@ -329,7 +585,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 33,
               "Title": "IContaRepository.cs",
               "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\Tudo\\ApiFinanceira\\ApiFinanceira.Domain\\Interfaces\\IContaRepository.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Tudo\\ApiFinanceira\\ApiFinanceira.Domain\\Interfaces\\IContaRepository.cs",
@@ -341,7 +597,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 34,
               "Title": "LoginRequest.cs",
               "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Requests\\LoginRequest.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Requests\\LoginRequest.cs",
@@ -353,7 +609,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 35,
               "Title": "ContaResponse.cs",
               "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Responses\\ContaResponse.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Responses\\ContaResponse.cs",
@@ -365,19 +621,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABSAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-09T01:45:42.593Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 36,
               "Title": "ComplianceService.cs",
               "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\ExternalServices\\ComplianceService.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\ExternalServices\\ComplianceService.cs",
@@ -389,7 +633,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 37,
               "Title": "IContaService.cs",
               "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\Services\\IContaService.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\Services\\IContaService.cs",
@@ -401,7 +645,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 38,
               "Title": "ContaRepository.cs",
               "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\Tudo\\ApiFinanceira\\ApiFinanceira.Infrastructure\\Repositories\\ContaRepository.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Tudo\\ApiFinanceira\\ApiFinanceira.Infrastructure\\Repositories\\ContaRepository.cs",
@@ -413,7 +657,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 39,
               "Title": "IComplianceService.cs",
               "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\ExternalServices\\IComplianceService.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\ExternalServices\\IComplianceService.cs",
@@ -425,7 +669,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 40,
               "Title": "LoginResponse.cs",
               "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Responses\\LoginResponse.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\DTOs\\Responses\\LoginResponse.cs",
@@ -437,7 +681,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 41,
               "Title": "IPessoaService.cs",
               "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\Services\\IPessoaService.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\Services\\IPessoaService.cs",
@@ -449,7 +693,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 42,
               "Title": "IAuthService.cs",
               "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\Services\\IAuthService.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\Services\\IAuthService.cs",
@@ -461,7 +705,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 43,
               "Title": "ComplianceResponse.cs",
               "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\ExternalServices\\ComplianceResponse.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\ExternalServices\\ComplianceResponse.cs",
@@ -473,7 +717,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 44,
               "Title": "CompliaceRequest.cs",
               "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\ExternalServices\\CompliaceRequest.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\ExternalServices\\CompliaceRequest.cs",
@@ -485,7 +729,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 45,
               "Title": "PessoaService.cs",
               "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\\u00C1rea de Trabalho\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\Services\\PessoaService.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\Tudo\\ApiFinanceira\\ApiFinanceira.Application\\Services\\PessoaService.cs",

@@ -80,22 +80,15 @@ namespace ApiFinanceira.Infrastructure.Data
                       .OnDelete(DeleteBehavior.Cascade); 
             });
 
-            modelBuilder.Entity<Transacao>(entity =>
-            {
-                entity.HasKey(t => t.Id);
-                entity.Property(t => t.Valor).HasColumnType("numeric(18,2)");
-                entity.Property(t => t.Descricao).HasMaxLength(500);
-                entity.Property(t => t.Tipo).IsRequired();
-                entity.Property(t => t.CreatedAt).IsRequired();
-                entity.Property(t => t.UpdatedAt).IsRequired();
-                entity.Property(t => t.Revertida).IsRequired();
+            modelBuilder.Entity<Transacao>()
+                .HasOne(t => t.Conta)
+                .WithMany()
+                .HasForeignKey(t => t.ContaId);
 
-                entity.HasOne(t => t.TransacaoOriginal)
-                      .WithMany()
-                      .HasForeignKey(t => t.TransacaoOriginalId)
-                      .IsRequired(false)
-                      .OnDelete(DeleteBehavior.Restrict);
-            });
+            modelBuilder.Entity<Conta>()
+                .Property(c => c.Saldo)
+                .HasColumnType("decimal(18,2)");
+
         }
     }
 }

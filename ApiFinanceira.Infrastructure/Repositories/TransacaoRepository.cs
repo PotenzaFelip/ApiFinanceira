@@ -11,42 +11,96 @@ using System.Threading.Tasks;
 
 namespace ApiFinanceira.Infrastructure.Repositories
 {
-    public class TransacaoRepository : GenericRepository<Transacao>, ITransacaoRepository
+    public class TransacaoRepository : ITransacaoRepository
     {
-        public TransacaoRepository(ApplicationDbContext context) : base(context)
+        private readonly ApplicationDbContext _context;
+        private readonly DbSet<Transacao> _dbSet;
+
+        public TransacaoRepository(ApplicationDbContext context)
         {
+            _context = context;
+            _dbSet = _context.Set<Transacao>(); // Inicializa o DbSet específico
         }
 
-        public async Task<IEnumerable<Transacao>> GetByContaIdAsync(Guid contaId, int itemsPerPage, int currentPage, TipoTransacao? tipo = null)
+        public async Task<Transacao?> GetByIdAsync(Guid id)
+        {
+            return await _dbSet.FindAsync(id);
+        }
+
+        public async Task<IEnumerable<Transacao>> GetAllAsync()
+        {
+            return await _dbSet.ToListAsync();
+        }
+
+        public async Task AddAsync(Transacao entity)
+        {
+            entity.CreatedAt = DateTime.UtcNow;
+            entity.UpdatedAt = DateTime.UtcNow;
+            await _dbSet.AddAsync(entity);
+        }
+
+        public async Task UpdateAsync(Transacao entity)
+        {
+            entity.UpdatedAt = DateTime.UtcNow;
+            _dbSet.Update(entity);
+            await Task.CompletedTask;
+        }
+
+        public async Task DeleteAsync(Guid id)
+        {
+            var entity = await GetByIdAsync(id);
+            if (entity != null)
+            {
+                _dbSet.Remove(entity);
+            }
+            await Task.CompletedTask;
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Transacao>> GetPagedTransactionsByContaIdAsync(Guid contaId, int skip, int take, string? type = null)
         {
             var query = _dbSet.Where(t => t.ContaId == contaId);
 
-            if (tipo.HasValue)
+            if (!string.IsNullOrEmpty(type))
             {
-                query = query.Where(t => t.Tipo == tipo.Value);
+                if (type.Equals("credit", StringComparison.OrdinalIgnoreCase))
+                {
+                    query = query.Where(t => t.Value > 0);
+                }
+                else if (type.Equals("debit", StringComparison.OrdinalIgnoreCase))
+                {
+                    query = query.Where(t => t.Value < 0);
+                }
             }
 
-            return await query.OrderByDescending(t => t.CreatedAt)
-                              .Skip((currentPage - 1) * itemsPerPage)
-                              .Take(itemsPerPage)
-                              .ToListAsync();
+            return await query
+                        .OrderByDescending(t => t.CreatedAt) // Ordem decrescente
+                        .Skip(skip)
+                        .Take(take)
+                        .ToListAsync();
         }
 
-        public async Task<int> CountTransactionsByContaIdAsync(Guid contaId, TipoTransacao? tipo = null)
+        public async Task<int> CountTransactionsByContaIdAsync(Guid contaId, string? type = null)
         {
             var query = _dbSet.Where(t => t.ContaId == contaId);
 
-            if (tipo.HasValue)
+            if (!string.IsNullOrEmpty(type))
             {
-                query = query.Where(t => t.Tipo == tipo.Value);
+                if (type.Equals("credit", StringComparison.OrdinalIgnoreCase))
+                {
+                    query = query.Where(t => t.Value > 0);
+                }
+                else if (type.Equals("debit", StringComparison.OrdinalIgnoreCase))
+                {
+                    query = query.Where(t => t.Value < 0);
+                }
             }
 
             return await query.CountAsync();
-        }
-
-        public async Task<Transacao?> GetTransactionByIdAndContaIdAsync(Guid transactionId, Guid contaId)
-        {
-            return await _dbSet.FirstOrDefaultAsync(t => t.Id == transactionId && t.ContaId == contaId);
         }
     }
 }

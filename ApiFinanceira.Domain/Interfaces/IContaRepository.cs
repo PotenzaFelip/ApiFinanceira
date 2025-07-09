@@ -12,5 +12,6 @@ namespace ApiFinanceira.Domain.Interfaces
         Task<Conta?> GetByAccountAndBranchAsync(string branch, string account);
         Task<IEnumerable<Conta>> GetByPessoaIdAsync(Guid pessoaId);
         Task<Conta?> GetByPessoaIdAndAccountIdAsync(Guid pessoaId, Guid contaId);
+        Task UpdateAsync(Conta entity);
     }
 }

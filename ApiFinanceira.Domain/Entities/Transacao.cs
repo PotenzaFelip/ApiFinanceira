@@ -7,29 +7,14 @@ using System.Threading.Tasks;
 
 namespace ApiFinanceira.Domain.Entities
 {
-    public class Transacao
+    public class Transacao : BaseEntity
     {
-        public Guid Id { get; set; }
         public Guid ContaId { get; set; }
-        public decimal Valor { get; set; }
-        public string Descricao { get; set; }
-        public TipoTransacao Tipo { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-        public bool Revertida { get; set; } = false;
-        public Guid? TransacaoOriginalId { get; set; }
-        public Transacao? TransacaoOriginal { get; set; }
+        public Conta? Conta { get; set; }
 
-        public Guid? ReceiverAccountId { get; set; }
-        public Conta? ReceiverAccount { get; set; }
+        public decimal Value { get; set; }
+        public string Description { get; set; } = string.Empty;
 
-        public Conta Conta { get; set; }
-
-        public Transacao()
-        {
-            Id = Guid.NewGuid();
-            CreatedAt = DateTime.UtcNow;
-            UpdatedAt = DateTime.UtcNow;
-        }
+        public string Type { get; set; }
     }
 }

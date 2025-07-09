@@ -8,10 +8,16 @@ using System.Threading.Tasks;
 
 namespace ApiFinanceira.Domain.Interfaces
 {
-    public interface ITransacaoRepository : IGenericRepository<Transacao>
+    public interface ITransacaoRepository
     {
-        Task<IEnumerable<Transacao>> GetByContaIdAsync(Guid contaId, int itemsPerPage, int currentPage, TipoTransacao? tipo = null);
-        Task<int> CountTransactionsByContaIdAsync(Guid contaId, TipoTransacao? tipo = null);
-        Task<Transacao?> GetTransactionByIdAndContaIdAsync(Guid transactionId, Guid contaId);
+        Task<Transacao?> GetByIdAsync(Guid id);
+        Task<IEnumerable<Transacao>> GetAllAsync();
+        Task AddAsync(Transacao entity);
+        Task UpdateAsync(Transacao entity);
+        Task DeleteAsync(Guid id);
+        Task SaveChangesAsync();
+
+        Task<IEnumerable<Transacao>> GetPagedTransactionsByContaIdAsync(Guid contaId, int skip, int take, string? type = null);
+        Task<int> CountTransactionsByContaIdAsync(Guid contaId, string? type = null);
     }
 }
