@@ -32,12 +32,12 @@ namespace ApiFinanceira.Application.Services
                 return null;
             }
 
-            //var complianceResponse = await _complianceService.ValidaDocumentComplianceAsync(cleanDocument);
+            var complianceResponse = await _complianceService.ValidaDocumentComplianceAsync(cleanDocument);
 
-            //if (complianceResponse == null || complianceResponse.Status != 1)
-            //{
-            //    return null;
-            //}
+            if (complianceResponse == null || complianceResponse.Status != 1)
+            {
+                return null;
+            }
 
             var pessoa = new Pessoa
             {

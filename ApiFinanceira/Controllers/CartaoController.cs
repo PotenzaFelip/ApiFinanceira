@@ -8,7 +8,6 @@ using System.Security.Claims;
 namespace ApiFinanceira.Controllers
 {
     [ApiController]
-    //[Route("api/accounts/{accountId}/cards")]
     [Authorize]
     public class CardsController : ControllerBase
     {
