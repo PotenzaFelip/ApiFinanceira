@@ -86,11 +86,19 @@ Exclua (drop) o seu banco de dados ApiFinanceiraDb no PostgreSQL.
 Repita os passos Add-Migration InitialCreate e Update-Database.
 
 
-▶️ Executando o Projeto
-Abrir no Visual Studio: Abra o arquivo de solução .sln (ex: ApiFinanceira.sln) no Visual Studio.
+## ▶️ Executando o Projeto
 
-Definir Projeto de Inicialização: No Solution Explorer, clique com o botão direito no projeto ApiFinanceira e selecione "Set as Startup Project".
+Siga estas etapas para iniciar a API no Visual Studio:
 
-Executar: Pressione F5 (ou Debug > Start Debugging).
+1.  **Abrir a Solução no Visual Studio:**
+    * Após clonar o repositório, navegue até a pasta `ApiFinanceira/ApiFinanceira` dentro do diretório raiz do projeto.
+    * Duplo clique no arquivo de solução `ApiFinanceira.sln` para abri-lo no Visual Studio.
 
-O projeto será iniciado e uma página do Swagger/OpenAPI deverá abrir em seu navegador (geralmente em https://localhost:7161/swagger ou uma porta similar). Esta interface permite que você interaja com os endpoints da API.
+2.  **Definir Projeto de Inicialização:**
+    * No **Solution Explorer** (Gerenciador de Soluções) do Visual Studio, localize o projeto `ApiFinanceira.Api`.
+    * Clique com o botão direito sobre ele e selecione "Set as Startup Project" (Definir como Projeto de Inicialização).
+
+3.  **Executar a Aplicação:**
+    * Pressione `F5` no teclado (ou vá em `Debug` > `Start Debugging` no menu superior do Visual Studio).
+
+O projeto será compilado e iniciado. Uma nova aba no seu navegador padrão deverá abrir automaticamente, direcionando para a interface do **Swagger/OpenAPI** (geralmente em `https://localhost:7161/swagger` ou uma porta similar). Esta interface interativa permite que você visualize e teste todos os endpoints da API. Caso a página do Swagger não abra automaticamente, verifique a saída do console no Visual Studio para encontrar a URL exata.
