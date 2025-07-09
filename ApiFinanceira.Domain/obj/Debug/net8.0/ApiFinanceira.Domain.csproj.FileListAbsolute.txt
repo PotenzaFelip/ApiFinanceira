@@ -1,0 +1,11 @@
+C:\Users\felip\OneDrive\Área de Trabalho\Tudo\ApiFinanceira\ApiFinanceira.Domain\bin\Debug\net8.0\ApiFinanceira.Domain.deps.json
+C:\Users\felip\OneDrive\Área de Trabalho\Tudo\ApiFinanceira\ApiFinanceira.Domain\bin\Debug\net8.0\ApiFinanceira.Domain.dll
+C:\Users\felip\OneDrive\Área de Trabalho\Tudo\ApiFinanceira\ApiFinanceira.Domain\bin\Debug\net8.0\ApiFinanceira.Domain.pdb
+C:\Users\felip\OneDrive\Área de Trabalho\Tudo\ApiFinanceira\ApiFinanceira.Domain\obj\Debug\net8.0\ApiFinanceira.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\felip\OneDrive\Área de Trabalho\Tudo\ApiFinanceira\ApiFinanceira.Domain\obj\Debug\net8.0\ApiFinanceira.Domain.AssemblyInfoInputs.cache
+C:\Users\felip\OneDrive\Área de Trabalho\Tudo\ApiFinanceira\ApiFinanceira.Domain\obj\Debug\net8.0\ApiFinanceira.Domain.AssemblyInfo.cs
+C:\Users\felip\OneDrive\Área de Trabalho\Tudo\ApiFinanceira\ApiFinanceira.Domain\obj\Debug\net8.0\ApiFinanceira.Domain.csproj.CoreCompileInputs.cache
+C:\Users\felip\OneDrive\Área de Trabalho\Tudo\ApiFinanceira\ApiFinanceira.Domain\obj\Debug\net8.0\ApiFinanceira.Domain.dll
+C:\Users\felip\OneDrive\Área de Trabalho\Tudo\ApiFinanceira\ApiFinanceira.Domain\obj\Debug\net8.0\refint\ApiFinanceira.Domain.dll
+C:\Users\felip\OneDrive\Área de Trabalho\Tudo\ApiFinanceira\ApiFinanceira.Domain\obj\Debug\net8.0\ApiFinanceira.Domain.pdb
+C:\Users\felip\OneDrive\Área de Trabalho\Tudo\ApiFinanceira\ApiFinanceira.Domain\obj\Debug\net8.0\ref\ApiFinanceira.Domain.dll
