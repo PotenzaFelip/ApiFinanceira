@@ -62,5 +62,14 @@ namespace ApiFinanceira.Application.Services
                 UpdatedAt = c.UpdatedAt
             }).ToList();
         }
+        public async Task<decimal> GetAccountBalanceAsync(Guid pessoaId, Guid accountId)
+        {
+            var conta = await _contaRepository.GetByIdAsync(accountId);
+            if (conta == null || conta.PessoaId != pessoaId)
+            {
+                throw new UnauthorizedAccessException("Conta não encontrada ou você não tem permissão para acessá-la.");
+            }
+            return conta.Saldo;
+        }
     }
 }

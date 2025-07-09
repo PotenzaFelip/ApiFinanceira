@@ -19,7 +19,7 @@ namespace ApiFinanceira.Infrastructure.Repositories
         public TransacaoRepository(ApplicationDbContext context)
         {
             _context = context;
-            _dbSet = _context.Set<Transacao>(); // Inicializa o DbSet específico
+            _dbSet = _context.Set<Transacao>(); 
         }
 
         public async Task<Transacao?> GetByIdAsync(Guid id)
@@ -30,6 +30,10 @@ namespace ApiFinanceira.Infrastructure.Repositories
         public async Task<IEnumerable<Transacao>> GetAllAsync()
         {
             return await _dbSet.ToListAsync();
+        }
+        public IQueryable<Transacao> GetQueryable()
+        {
+            return _context.Transacoes.AsQueryable();
         }
 
         public async Task AddAsync(Transacao entity)

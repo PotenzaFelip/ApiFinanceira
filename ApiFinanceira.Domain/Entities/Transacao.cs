@@ -16,5 +16,9 @@ namespace ApiFinanceira.Domain.Entities
         public string Description { get; set; } = string.Empty;
 
         public string Type { get; set; }
+        public bool IsReverted { get; set; } = false;
+        public Guid? OriginalTransactionId { get; set; }
+        public Transacao? OriginalTransaction { get; set; }
+        public Guid? RelatedTransactionId { get; set; }
     }
 }

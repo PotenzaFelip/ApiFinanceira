@@ -18,5 +18,6 @@ namespace ApiFinanceira.Application.Services
             int itemsPerPage = 10,
             int currentPage = 1,
             string? type = null);
+        Task<TransacaoResponse?> RevertTransactionAsync(Guid pessoaId, Guid accountId, Guid transactionId, string description);
     }
 }

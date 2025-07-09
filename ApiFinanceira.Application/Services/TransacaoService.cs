@@ -2,6 +2,7 @@
 using ApiFinanceira.Application.DTOs.Responses;
 using ApiFinanceira.Domain.Entities;
 using ApiFinanceira.Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -166,5 +167,164 @@ namespace ApiFinanceira.Application.Services
                 Pagination = paginationInfo
             };
         }
+        public async Task<TransacaoResponse?> RevertTransactionAsync(Guid pessoaId, Guid accountId, Guid transactionId, string description)
+        {
+            var contaQuePediuReversao = await _contaRepository.GetByIdAsync(accountId);
+            if (contaQuePediuReversao == null || contaQuePediuReversao.PessoaId != pessoaId)
+            {
+                throw new UnauthorizedAccessException("Conta não encontrada ou você não tem permissão para acessá-la.");
+            }
+
+            var originalTransaction = await _transacaoRepository.GetByIdAsync(transactionId);
+            if (originalTransaction == null || originalTransaction.ContaId != accountId)
+            {
+                throw new InvalidOperationException("Transação não encontrada para a conta especificada.");
+            }
+
+            if (originalTransaction.IsReverted)
+            {
+                throw new InvalidOperationException("Esta transação já foi revertida.");
+            }
+            if (originalTransaction.OriginalTransactionId.HasValue)
+            {
+                throw new InvalidOperationException("Não é permitido reverter uma transação que já é uma reversão.");
+            }
+
+            var reversalTransactions = new List<Transacao>();
+            var accountsToUpdate = new List<Conta>();
+
+            if (originalTransaction.Type == "transfer_in" || originalTransaction.Type == "transfer_out")
+            {
+               
+                var relatedTransaction = await _transacaoRepository.GetQueryable()
+                    .Where(t =>
+                        t.Value == -originalTransaction.Value &&
+                        t.Description.Contains("Transferência") &&
+                        t.CreatedAt >= originalTransaction.CreatedAt.AddSeconds(-5) &&
+                        t.CreatedAt <= originalTransaction.CreatedAt.AddSeconds(5) &&
+                        t.ContaId != originalTransaction.ContaId &&
+                        !t.IsReverted &&
+                        !t.OriginalTransactionId.HasValue
+                    )
+                    .FirstOrDefaultAsync();
+
+                if (relatedTransaction == null)
+                {
+                    throw new InvalidOperationException("Não foi possível encontrar a transação parceira para a reversão da transferência interna. A reversão manual de ambas as partes pode ser necessária ou implementar um ID de relacionamento.");
+                }
+
+                var contaParceira = await _contaRepository.GetByIdAsync(relatedTransaction.ContaId);
+                if (contaParceira == null)
+                {
+                    throw new InvalidOperationException("Conta parceira da transferência não encontrada. Contate o suporte.");
+                }
+
+                var reversalValueOriginal = -originalTransaction.Value;
+                var reversalTypeOriginal = originalTransaction.Type.Contains("in") ? "debit_reversal_transfer" : "credit_reversal_transfer";
+
+                if (reversalValueOriginal < 0 && (contaQuePediuReversao.Saldo + reversalValueOriginal) < 0)
+                {
+                    throw new InvalidOperationException($"Saldo insuficiente na conta {contaQuePediuReversao.Account} para reverter a transação de {originalTransaction.Type}.");
+                }
+                contaQuePediuReversao.Saldo += reversalValueOriginal;
+                accountsToUpdate.Add(contaQuePediuReversao);
+
+                var reversalOriginal = new Transacao
+                {
+                    ContaId = contaQuePediuReversao.Id,
+                    Value = reversalValueOriginal,
+                    Description = $"Reversão da {originalTransaction.Type} original: {description}",
+                    Type = reversalTypeOriginal,
+                    OriginalTransactionId = originalTransaction.Id
+                };
+                reversalTransactions.Add(reversalOriginal);
+
+
+                var reversalValueRelated = -relatedTransaction.Value;
+                var reversalTypeRelated = relatedTransaction.Type.Contains("in") ? "debit_reversal_transfer" : "credit_reversal_transfer";
+
+                if (reversalValueRelated < 0 && (contaParceira.Saldo + reversalValueRelated) < 0)
+                {
+                    throw new InvalidOperationException($"Saldo insuficiente na conta {contaParceira.Account} para reverter a transação parceira.");
+                }
+                contaParceira.Saldo += reversalValueRelated;
+                accountsToUpdate.Add(contaParceira);
+
+                var reversalRelated = new Transacao
+                {
+                    ContaId = contaParceira.Id,
+                    Value = reversalValueRelated,
+                    Description = $"Reversão da {relatedTransaction.Type} parceira: {description}",
+                    Type = reversalTypeRelated,
+                    OriginalTransactionId = relatedTransaction.Id
+                };
+                reversalTransactions.Add(reversalRelated);
+
+                originalTransaction.IsReverted = true;
+                relatedTransaction.IsReverted = true;
+                _transacaoRepository.UpdateAsync(relatedTransaction);
+            }
+            else
+            {
+                decimal reversalValue;
+                string reversalType;
+
+                reversalValue = -originalTransaction.Value;
+
+                if (originalTransaction.Type == "credit")
+                {
+                    reversalType = "debit_reversal";
+                }
+                else if (originalTransaction.Type == "debit")
+                {
+                    reversalType = "credit_reversal";
+                }
+                else
+                {
+                    throw new InvalidOperationException("Tipo de transação original desconhecido para reversão.");
+                }
+
+                if (reversalValue < 0 && (contaQuePediuReversao.Saldo + reversalValue) < 0)
+                {
+                    throw new InvalidOperationException("Saldo insuficiente para realizar a reversão desta transação.");
+                }
+
+                var reversalSingle = new Transacao
+                {
+                    ContaId = accountId,
+                    Value = reversalValue,
+                    Description = description,
+                    Type = reversalType,
+                    OriginalTransactionId = originalTransaction.Id
+                };
+                reversalTransactions.Add(reversalSingle);
+
+                contaQuePediuReversao.Saldo += reversalValue;
+                accountsToUpdate.Add(contaQuePediuReversao);
+            }
+
+            originalTransaction.IsReverted = true;
+
+            foreach (var transacao in reversalTransactions)
+            {
+                await _transacaoRepository.AddAsync(transacao);
+            }
+            await _transacaoRepository.UpdateAsync(originalTransaction);
+            foreach (var contaAtualizar in accountsToUpdate.DistinctBy(c => c.Id))
+            {
+                await _contaRepository.UpdateAsync(contaAtualizar);
+            }
+            await _transacaoRepository.SaveChangesAsync();
+
+            return new TransacaoResponse
+            {
+                Id = reversalTransactions.First().Id,
+                Value = reversalTransactions.First().Value,
+                Description = reversalTransactions.First().Description,
+                CreatedAt = reversalTransactions.First().CreatedAt,
+                UpdatedAt = reversalTransactions.First().UpdatedAt
+            };
+        }
+
     }
 }

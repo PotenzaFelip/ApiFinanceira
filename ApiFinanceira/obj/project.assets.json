@@ -1209,6 +1209,7 @@
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "ApiFinanceira.Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "9.0.7",
           "Microsoft.Extensions.Configuration": "9.0.7",
           "System.IdentityModel.Tokens.Jwt": "8.12.1"
         },

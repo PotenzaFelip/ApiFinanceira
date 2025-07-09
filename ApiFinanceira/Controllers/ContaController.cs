@@ -3,6 +3,7 @@ using ApiFinanceira.Application.DTOs.Responses;
 using ApiFinanceira.Application.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 
 namespace ApiFinanceira.Controllers
@@ -14,11 +15,13 @@ namespace ApiFinanceira.Controllers
     {
         private readonly IContaService _contaService;
         private readonly ICartaoService _cartaoService;
+        private readonly ITransacaoService _transacaoService;
 
-        public AccountsController(IContaService contaService, ICartaoService cartaoService)
+        public AccountsController(IContaService contaService, ICartaoService cartaoService, ITransacaoService transacaoService)
         {
             _contaService = contaService;
             _cartaoService = cartaoService;
+            _transacaoService = transacaoService;
         }
 
         private Guid GetPessoaIdFromClaims()
@@ -72,5 +75,65 @@ namespace ApiFinanceira.Controllers
                 return Unauthorized(new { message = ex.Message });
             }
         }
+        [HttpGet("{accountId}/balance")]
+        [ProducesResponseType(typeof(BalanceResponse), 200)]
+        [ProducesResponseType(401)]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> GetAccountBalance(Guid accountId)
+        {
+            try
+            {
+                var pessoaId = GetPessoaIdFromClaims();
+                var balance = await _contaService.GetAccountBalanceAsync(pessoaId, accountId);
+                return Ok(new BalanceResponse { Balance = balance });
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return Unauthorized(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = $"Erro interno ao obter saldo: {ex.Message}" });
+            }
+        }
+
+        public class BalanceResponse
+        {
+            public decimal Balance { get; set; }
+        }
+        [HttpPost("{accountId}/transactions/{transactionId}/revert")]
+        [ProducesResponseType(typeof(TransacaoResponse), 200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        public async Task<IActionResult> RevertTransaction(Guid accountId, Guid transactionId, [FromBody] RevertTransactionRequest request)
+        {
+            try
+            {
+                var pessoaId = GetPessoaIdFromClaims();
+                var revertedTransaction = await _transacaoService.RevertTransactionAsync(pessoaId, accountId, transactionId, request.Description);
+                return Ok(revertedTransaction);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return Unauthorized(new { message = ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = $"Erro interno ao reverter transação: {ex.Message}" });
+            }
+        }        
+        public class RevertTransactionRequest
+        {
+            [Required(ErrorMessage = "A descrição da reversão é obrigatória.")]
+            public string Description { get; set; } = string.Empty;
+        }
     }
-}
+
+}  
+

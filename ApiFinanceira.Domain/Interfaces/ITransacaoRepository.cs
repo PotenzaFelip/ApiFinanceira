@@ -17,6 +17,8 @@ namespace ApiFinanceira.Domain.Interfaces
         Task DeleteAsync(Guid id);
         Task SaveChangesAsync();
 
+        IQueryable<Transacao> GetQueryable();
+
         Task<IEnumerable<Transacao>> GetPagedTransactionsByContaIdAsync(Guid contaId, int skip, int take, string? type = null);
         Task<int> CountTransactionsByContaIdAsync(Guid contaId, string? type = null);
     }

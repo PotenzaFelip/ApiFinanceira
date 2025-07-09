@@ -12,5 +12,6 @@ namespace ApiFinanceira.Application.Services
     {
         Task<ContaResponse?> CreateContaAsync(Guid pessoaId, CreateContaRequest request);
         Task<IEnumerable<ContaResponse>> GetContasByPessoaIdAsync(Guid pessoaId);
+        Task<decimal> GetAccountBalanceAsync(Guid pessoaId, Guid accountId);
     }
 }
