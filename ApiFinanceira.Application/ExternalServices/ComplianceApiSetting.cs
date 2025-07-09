@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ApiFinanceira.Application.ExternalServices
 {
-    public interface IComplianceService
+    public class ComplianceApiSettings
     {
-        Task<ComplianceResponse?> ValidaDocumentComplianceAsync(string document, string documentType);
+        public string BaseUrlCpf { get; set; } = string.Empty;
+        public string BaseUrlCnpj { get; set; } = string.Empty;
     }
 }
