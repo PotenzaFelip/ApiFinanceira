@@ -3785,11 +3785,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira\\ApiFinanceira.csproj",
+      "projectUniqueName": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\bb\\ApiFinanceira\\ApiFinanceira\\ApiFinanceira.csproj",
       "projectName": "ApiFinanceira",
-      "projectPath": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira\\ApiFinanceira.csproj",
+      "projectPath": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\bb\\ApiFinanceira\\ApiFinanceira\\ApiFinanceira.csproj",
       "packagesPath": "C:\\Users\\felip\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira\\obj\\",
+      "outputPath": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\bb\\ApiFinanceira\\ApiFinanceira\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3810,11 +3810,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj": {
-              "projectPath": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj"
+            "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\bb\\ApiFinanceira\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj": {
+              "projectPath": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\bb\\ApiFinanceira\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj"
             },
-            "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Infrastructure\\ApiFinanceira.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Infrastructure\\ApiFinanceira.Infrastructure.csproj"
+            "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\bb\\ApiFinanceira\\ApiFinanceira.Infrastructure\\ApiFinanceira.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\bb\\ApiFinanceira\\ApiFinanceira.Infrastructure\\ApiFinanceira.Infrastructure.csproj"
             }
           }
         }
