@@ -23,8 +23,9 @@ builder.Services.AddScoped<IPessoaRepository, PessoaRepository>();
 builder.Services.AddScoped<IContaRepository, ContaRepository>();
 builder.Services.AddScoped<ICartaoRepository, CartaoRepository>();
 builder.Services.AddScoped<ITransacaoRepository, TransacaoRepository>();
-builder.Services.AddScoped<IContaRepository, ContaRepository>(); 
+builder.Services.AddScoped<IContaRepository, ContaRepository>();
 
+builder.Services.Configure<ComplianceApiSettings>(builder.Configuration.GetSection("ComplianceApiSettings"));
 
 // Registro dos Serviços de Aplicação para Injeção de Dependência
 builder.Services.AddScoped<IPessoaService, PessoaService>();

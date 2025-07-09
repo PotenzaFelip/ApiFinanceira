@@ -32,12 +32,34 @@ namespace ApiFinanceira.Application.Services
                 return null;
             }
 
-            var complianceResponse = await _complianceService.ValidaDocumentComplianceAsync(cleanDocument);
-
-            if (complianceResponse == null || complianceResponse.Status != 1)
+            string documentType;
+            if (cleanDocument.Length == 11)
             {
-                return null;
+                documentType = "cpf";
             }
+            else if (cleanDocument.Length == 14)
+            {
+                documentType = "cnpj";
+            }
+            else
+            {
+                throw new ArgumentException("Documento inválido. Deve ser um CPF (11 dígitos) ou CNPJ (14 dígitos).", nameof(request.Document));
+            }
+           
+            try
+            {
+                var complianceResponse = await _complianceService.ValidaDocumentComplianceAsync(cleanDocument, documentType);
+
+                if (complianceResponse == null || complianceResponse.Status != 1)
+                {
+                    throw new InvalidOperationException($"Documento não aprovado pela API de Compliance. Status retornado: {complianceResponse?.Status ?? 0}. Mensagem: {complianceResponse?.Message ?? "N/A"}");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Falha na validação do documento na API de Compliance: {ex.Message}", ex);
+            }
+
 
             var pessoa = new Pessoa
             {

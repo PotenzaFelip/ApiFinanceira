@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,37 +15,49 @@ namespace ApiFinanceira.Application.ExternalServices
     public class ComplianceService : IComplianceService
     {
         private readonly HttpClient _httpClient;
-        private readonly string _complianceApiBaseUrl;
+        private readonly ComplianceApiSettings _complianceApiSettings; 
         private readonly string? _complianceApiAuthToken;
-
-        public ComplianceService(HttpClient httpClient, IConfiguration configuration)
+        
+        public ComplianceService(HttpClient httpClient, IOptions<ComplianceApiSettings> complianceApiSettings, IConfiguration configuration)
         {
             _httpClient = httpClient;
-            _complianceApiBaseUrl = configuration["ExternalApis:ComplianceApi:BaseUrl"]
-                                    ?? throw new ArgumentNullException("A URL da API de Compliance não foi configurada.");
-
+            _complianceApiSettings = complianceApiSettings.Value;
+           
             _complianceApiAuthToken = configuration["ExternalApis:ComplianceApi:AuthToken"];
-
-            _httpClient.BaseAddress = new Uri(_complianceApiBaseUrl);
-
+          
             if (!string.IsNullOrEmpty(_complianceApiAuthToken))
             {
                 _httpClient.DefaultRequestHeaders.Authorization =
                     new AuthenticationHeaderValue("Bearer", _complianceApiAuthToken);
             }
         }
-
-        public async Task<ComplianceResponse?> ValidaDocumentComplianceAsync(string document)
+        
+        public async Task<ComplianceResponse?> ValidaDocumentComplianceAsync(string document, string documentType)
         {
             var request = new ComplianceRequest { Document = document };
 
-            try
+            string requestUri;
+            
+            if (documentType.Equals("cpf", StringComparison.OrdinalIgnoreCase))
             {
-                var response = await _httpClient.PostAsJsonAsync("api/check-document", request);
+                requestUri = _complianceApiSettings.BaseUrlCpf;
+            }
+            else if (documentType.Equals("cnpj", StringComparison.OrdinalIgnoreCase))
+            {
+                requestUri = _complianceApiSettings.BaseUrlCnpj;
+            }
+            else
+            {
+                throw new ArgumentException("Tipo de documento inválido. Deve ser 'cpf' ou 'cnpj'.", nameof(documentType));
+            }
+
+            try
+            {                
+                var response = await _httpClient.PostAsJsonAsync(requestUri, request);
                 var responseContent = await response.Content.ReadAsStringAsync();
 
-                Console.WriteLine($"[ComplianceService] Status Code da Resposta: {response.StatusCode}");
-                Console.WriteLine($"[ComplianceService] Conteúdo Bruto da Resposta: {responseContent}");
+                Console.WriteLine($"[ComplianceService] Status Code da Resposta ({requestUri}): {response.StatusCode}");
+                Console.WriteLine($"[ComplianceService] Conteúdo Bruto da Resposta ({requestUri}): {responseContent}");
 
                 if (response.StatusCode == HttpStatusCode.Unauthorized)
                 {
@@ -56,9 +69,7 @@ namespace ApiFinanceira.Application.ExternalServices
                             return new ComplianceResponse { Status = -1, Message = "Erro de autenticação: Token de autorização ausente ou inválido." };
                         }
                     }
-                    catch (JsonException)
-                    {
-                    }
+                    catch (JsonException) {}
                     return new ComplianceResponse { Status = -1, Message = $"Erro de autenticação (401): {responseContent}" };
                 }
 
@@ -72,9 +83,7 @@ namespace ApiFinanceira.Application.ExternalServices
                             return new ComplianceResponse { Status = errorResponse.Status, Message = errorResponse.Reason ?? errorResponse.Message ?? $"Erro desconhecido ({response.StatusCode})." };
                         }
                     }
-                    catch (JsonException)
-                    {
-                    }
+                    catch (JsonException) {}
                     return new ComplianceResponse { Status = -1, Message = $"Erro na API de Compliance: {response.StatusCode} - {responseContent}" };
                 }
 
@@ -88,17 +97,17 @@ namespace ApiFinanceira.Application.ExternalServices
             }
             catch (HttpRequestException ex)
             {
-                Console.WriteLine($"Erro de requisição HTTP ao chamar a API de Compliance: {ex.Message}");
+                Console.WriteLine($"Erro de requisição HTTP ao chamar a API de Compliance ({requestUri}): {ex.Message}");
                 return new ComplianceResponse { Status = -1, Message = $"Falha de conexão com a API de Compliance: {ex.Message}" };
             }
             catch (JsonException ex)
             {
-                Console.WriteLine($"Erro de JSON ao desserializar a resposta da API de Compliance: {ex.Message}. Conteúdo recebido:");
+                Console.WriteLine($"Erro de JSON ao desserializar a resposta da API de Compliance ({requestUri}): {ex.Message}. Conteúdo recebido:");
                 return new ComplianceResponse { Status = -1, Message = $"Resposta da API de Compliance não é um JSON válido. Erro: {ex.Message}" };
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Um erro inesperado ocorreu ao chamar a API de Compliance: {ex.Message}");
+                Console.WriteLine($"Um erro inesperado ocorreu ao chamar a API de Compliance ({requestUri}): {ex.Message}");
                 return new ComplianceResponse { Status = -1, Message = $"Erro inesperado ao verificar compliance: {ex.Message}" };
             }
         }
