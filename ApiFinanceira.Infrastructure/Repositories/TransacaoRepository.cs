@@ -82,7 +82,7 @@ namespace ApiFinanceira.Infrastructure.Repositories
             }
 
             return await query
-                        .OrderByDescending(t => t.CreatedAt) // Ordem decrescente
+                        .OrderByDescending(t => t.CreatedAt)
                         .Skip(skip)
                         .Take(take)
                         .ToListAsync();

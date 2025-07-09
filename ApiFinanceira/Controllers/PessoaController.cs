@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ApiFinanceira.Controllers
 {
     [ApiController] 
-    [Route("api/[controller]")]
+    [Route("api/people")]
     public class PessoaController : ControllerBase
     {
         private readonly IPessoaService _pessoaService;
@@ -19,7 +19,7 @@ namespace ApiFinanceira.Controllers
         }
 
 
-        [HttpPost("register")]
+        [HttpPost()]
         [ProducesResponseType(typeof(PessoaResponse), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
@@ -40,6 +40,7 @@ namespace ApiFinanceira.Controllers
             return CreatedAtAction(nameof(GetPessoaById), new { id = pessoaResponse.Id }, pessoaResponse);
         }
 
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet("{id:guid}")]
         [ProducesResponseType(typeof(PessoaResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -55,7 +56,7 @@ namespace ApiFinanceira.Controllers
             return Ok(pessoaResponse);
         }
 
-       
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpGet("document/{document}")]
         [ProducesResponseType(typeof(PessoaResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
