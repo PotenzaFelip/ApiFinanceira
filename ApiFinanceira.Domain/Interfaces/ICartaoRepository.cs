@@ -9,9 +9,12 @@ namespace ApiFinanceira.Domain.Interfaces
 {
     public interface ICartaoRepository : IGenericRepository<Cartao>
     {
+        Task<Cartao?> GetByCardNumberAsync(string cardNumber);
+        Task<IEnumerable<Cartao>> GetPhysicalCardsByContaIdAsync(Guid contaId);
         Task<IEnumerable<Cartao>> GetByContaIdAsync(Guid contaId);
-        Task<bool> HasPhysicalCardByContaIdAsync(Guid contaId);
-        Task<IEnumerable<Cartao>> GetCardsByPessoaIdAsync(Guid pessoaId, int itemsPerPage, int currentPage, bool maskNumber = true);
+        Task<IEnumerable<Cartao>> GetAllCardsByPessoaIdAsync(Guid pessoaId);
+        Task<IEnumerable<Cartao>> GetPagedCardsByPessoaIdAsync(Guid pessoaId, int skip, int take);
         Task<int> CountCardsByPessoaIdAsync(Guid pessoaId);
+        Task<Cartao?> GetPhysicalCardByContaIdAsync(Guid contaId);
     }
 }

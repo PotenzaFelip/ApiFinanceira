@@ -13,10 +13,12 @@ namespace ApiFinanceira.Controllers
     public class AccountsController : ControllerBase
     {
         private readonly IContaService _contaService;
+        private readonly ICartaoService _cartaoService;
 
-        public AccountsController(IContaService contaService)
+        public AccountsController(IContaService contaService, ICartaoService cartaoService)
         {
             _contaService = contaService;
+            _cartaoService = cartaoService;
         }
 
         private Guid GetPessoaIdFromClaims()

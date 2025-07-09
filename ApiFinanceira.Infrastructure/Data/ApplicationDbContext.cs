@@ -65,13 +65,19 @@ namespace ApiFinanceira.Infrastructure.Data
 
             modelBuilder.Entity<Cartao>(entity =>
             {
-                entity.HasKey(ca => ca.Id);
-                entity.Property(ca => ca.Type).IsRequired();
-                entity.Property(ca => ca.NumeroCompleto).IsRequired();
-                entity.Property(ca => ca.UltimosQuatroDigitos).IsRequired().HasMaxLength(4);
-                entity.Property(ca => ca.CVVHash).IsRequired().HasMaxLength(255);
-                entity.Property(ca => ca.CreatedAt).IsRequired();
-                entity.Property(ca => ca.UpdatedAt).IsRequired();
+                entity.Property(c => c.Type).IsRequired().HasMaxLength(10); 
+                entity.Property(c => c.Number).IsRequired().HasMaxLength(19);
+                entity.Property(c => c.Cvv).IsRequired().HasMaxLength(3);
+
+               
+                entity.HasIndex(c => c.Number).IsUnique();
+
+                
+                entity.HasOne(c => c.Conta)
+                      .WithMany(co => co.Cartoes)
+                      .HasForeignKey(c => c.ContaId)
+                      .IsRequired()
+                      .OnDelete(DeleteBehavior.Cascade); 
             });
 
             modelBuilder.Entity<Transacao>(entity =>

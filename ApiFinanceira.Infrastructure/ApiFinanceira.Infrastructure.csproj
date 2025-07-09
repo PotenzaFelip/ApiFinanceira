@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20250709060632_AddCartoesTable.cs" />
+    <Compile Remove="Migrations\20250709060632_AddCartoesTable.Designer.cs" />
+    <Compile Remove="Migrations\20250709060738_AddCartoesTable.cs" />
+    <Compile Remove="Migrations\20250709060738_AddCartoesTable.Designer.cs" />
+    <Compile Remove="Migrations\ApplicationDbContextModelSnapshot.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.7">
       <PrivateAssets>all</PrivateAssets>

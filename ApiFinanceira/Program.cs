@@ -1,5 +1,6 @@
 using ApiFinanceira.Application.ExternalServices;
 using ApiFinanceira.Application.Services;
+using ApiFinanceira.Application.Services.ApiFinanceira.Application.Services;
 using ApiFinanceira.Domain.Interfaces;
 using ApiFinanceira.Infrastructure.Data;
 using ApiFinanceira.Infrastructure.Repositories;
@@ -12,7 +13,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Configuração do DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),
+        b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName));
+});
 
 // Registro dos Repositórios para Injeção de Dependência
 builder.Services.AddScoped<IPessoaRepository, PessoaRepository>();
@@ -25,6 +29,7 @@ builder.Services.AddScoped<IContaRepository, ContaRepository>();
 // Registro dos Serviços de Aplicação para Injeção de Dependência
 builder.Services.AddScoped<IPessoaService, PessoaService>();
 builder.Services.AddScoped<IContaService, ContaService>();
+builder.Services.AddScoped<ICartaoService, CartaoService>();
 builder.Services.AddHttpClient<IComplianceService, ComplianceService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 

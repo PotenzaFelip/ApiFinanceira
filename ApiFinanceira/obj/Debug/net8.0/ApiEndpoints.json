@@ -36,6 +36,63 @@
     ]
   },
   {
+    "ContainingType": "ApiFinanceira.Controllers.CardsController",
+    "Method": "CreateCard",
+    "RelativePath": "api/accounts/{accountId}/cards",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "ApiFinanceira.Application.DTOs.Requests.CreateCartaoRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ApiFinanceira.Application.DTOs.Responses.CartaoResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ApiFinanceira.Controllers.CardsController",
+    "Method": "GetCardsByAccount",
+    "RelativePath": "api/accounts/{accountId}/cards",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[ApiFinanceira.Application.DTOs.Responses.CartaoResponse, ApiFinanceira.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "ApiFinanceira.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/Auth/login",
@@ -50,6 +107,37 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApiFinanceira.Controllers.CardsController",
+    "Method": "GetCards",
+    "RelativePath": "api/cards",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "itemsPerPage",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "currentPage",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ApiFinanceira.Application.DTOs.Responses.PagedCardResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "ApiFinanceira.Controllers.PessoaController",

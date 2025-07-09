@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace ApiFinanceira.Infrastructure.Repositories
 {
@@ -17,43 +18,57 @@ namespace ApiFinanceira.Infrastructure.Repositories
         {
         }
 
+        public async Task<Cartao?> GetByCardNumberAsync(string cardNumber)
+        {
+            return await _context.Cartoes.FirstOrDefaultAsync(c => c.Number == cardNumber);
+        }
+
+        public async Task<IEnumerable<Cartao>> GetPhysicalCardsByContaIdAsync(Guid contaId)
+        {
+            return await _context.Cartoes
+                                 .Where(c => c.ContaId == contaId && c.Type == "physical")
+                                 .ToListAsync();
+        }
+
         public async Task<IEnumerable<Cartao>> GetByContaIdAsync(Guid contaId)
         {
-            return await _dbSet.Where(c => c.ContaId == contaId).ToListAsync();
+            return await _context.Cartoes
+                                 .Where(c => c.ContaId == contaId)
+                                 .ToListAsync();
         }
 
-        public async Task<bool> HasPhysicalCardByContaIdAsync(Guid contaId)
+        public async Task<IEnumerable<Cartao>> GetAllCardsByPessoaIdAsync(Guid pessoaId)
         {
-            return await _dbSet.AnyAsync(c => c.ContaId == contaId && c.Type == TipoCartao.Physical);
+            return await _context.Cartoes
+                                 .Include(c => c.Conta)
+                                 .Where(c => c.Conta != null && c.Conta.PessoaId == pessoaId)
+                                 .OrderByDescending(c => c.CreatedAt)
+                                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Cartao>> GetCardsByPessoaIdAsync(Guid pessoaId, int itemsPerPage, int currentPage, bool maskNumber = true)
+        public async Task<IEnumerable<Cartao>> GetPagedCardsByPessoaIdAsync(Guid pessoaId, int skip, int take)
         {
-            var query = _dbSet.Where(c => c.Conta.PessoaId == pessoaId)
-                              .OrderByDescending(c => c.CreatedAt)
-                              .Skip((currentPage - 1) * itemsPerPage)
-                              .Take(itemsPerPage)
-                              .AsQueryable();
-
-            var cards = await query.ToListAsync();
-
-            if (maskNumber)
-            {
-                foreach (var card in cards)
-                {             
-                    if (card.NumeroCompleto != null && card.NumeroCompleto.Length > 4)
-                    {
-                        card.NumeroCompleto = card.NumeroCompleto.Substring(card.NumeroCompleto.Length - 4);
-                    }
-                }
-            }
-
-            return cards;
+            return await _context.Cartoes
+                                 .Include(c => c.Conta)
+                                 .Where(c => c.Conta != null && c.Conta.PessoaId == pessoaId)
+                                 .OrderByDescending(c => c.CreatedAt)
+                                 .Skip(skip)
+                                 .Take(take)
+                                 .ToListAsync();
         }
 
         public async Task<int> CountCardsByPessoaIdAsync(Guid pessoaId)
         {
-            return await _dbSet.CountAsync(c => c.Conta.PessoaId == pessoaId);
+            return await _context.Cartoes
+                                 .Include(c => c.Conta)
+                                 .CountAsync(c => c.Conta != null && c.Conta.PessoaId == pessoaId);
         }
+        public async Task<Cartao?> GetPhysicalCardByContaIdAsync(Guid contaId)
+        {
+            return await _context.Cartoes
+                                 .Where(c => c.ContaId == contaId && c.Type.ToLower() == "physical")
+                                 .FirstOrDefaultAsync();
+        }
+
     }
 }
