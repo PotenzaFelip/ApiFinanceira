@@ -57,6 +57,7 @@ namespace ApiFinanceira.Application.Services
                 Id = novaTransacao.Id,
                 Value = novaTransacao.Value,
                 Description = novaTransacao.Description,
+                Type = novaTransacao.Type,
                 CreatedAt = novaTransacao.CreatedAt,
                 UpdatedAt = novaTransacao.UpdatedAt
             };
@@ -150,6 +151,7 @@ namespace ApiFinanceira.Application.Services
                 Id = t.Id,
                 Value = t.Value,
                 Description = t.Description,
+                Type = t.Type,
                 CreatedAt = t.CreatedAt,
                 UpdatedAt = t.UpdatedAt
             }).ToList();

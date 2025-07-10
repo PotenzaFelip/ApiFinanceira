@@ -35,7 +35,7 @@ namespace ApiFinanceira.Application.Services
                 }
 
                 var cleanCardNumber = request.Number.Replace(" ", "");
-                if (cleanCardNumber.Length != 16)
+                if (cleanCardNumber.Length != 16 || !long.TryParse(cleanCardNumber, out _))
                 {
                     throw new ArgumentException("O número do cartão deve conter 16 dígitos.");
                 }
@@ -96,7 +96,7 @@ namespace ApiFinanceira.Application.Services
                 {
                     Id = c.Id,
                     Type = c.Type,
-                    Number = c.Number,
+                    Number = MaskLastFourDigits(c.Number),
                     Cvv = c.Cvv,
                     CreatedAt = c.CreatedAt,
                     UpdatedAt = c.UpdatedAt

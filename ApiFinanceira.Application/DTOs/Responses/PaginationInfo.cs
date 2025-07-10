@@ -11,7 +11,17 @@ namespace ApiFinanceira.Application.DTOs.Responses
         public int ItemsPerPage { get; set; }
         public int CurrentPage { get; set; }
         public int TotalItems { get; set; }
-        public int TotalPages => (int)Math.Ceiling((double)TotalItems / ItemsPerPage);
+        public int TotalPages
+        {
+            get
+            {
+                if (TotalItems == 0)
+                {
+                    return 1;
+                }
+                return (int)Math.Ceiling((double)TotalItems / ItemsPerPage);
+            }
+        }
     }
 }
 

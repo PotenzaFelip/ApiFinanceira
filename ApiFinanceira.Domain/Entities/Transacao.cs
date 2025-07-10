@@ -10,7 +10,6 @@ namespace ApiFinanceira.Domain.Entities
     public class Transacao : BaseEntity
     {
         public Guid ContaId { get; set; }
-        public Conta? Conta { get; set; }
 
         public decimal Value { get; set; }
         public string Description { get; set; } = string.Empty;
@@ -19,6 +18,5 @@ namespace ApiFinanceira.Domain.Entities
         public bool IsReverted { get; set; } = false;
         public Guid? OriginalTransactionId { get; set; }
         public Transacao? OriginalTransaction { get; set; }
-        public Guid? RelatedTransactionId { get; set; }
     }
 }

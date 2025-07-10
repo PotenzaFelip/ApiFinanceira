@@ -55,7 +55,7 @@ namespace ApiFinanceira.Application.Services
                     throw new InvalidOperationException($"Documento não aprovado pela API de Compliance. Status retornado: {complianceResponse?.Status ?? 0}. Mensagem: {complianceResponse?.Message ?? "N/A"}");
                 }
             }
-            catch (Exception ex)
+            catch (System.Net.Http.HttpRequestException ex)
             {
                 throw new InvalidOperationException($"Falha na validação do documento na API de Compliance: {ex.Message}", ex);
             }

@@ -28,28 +28,26 @@ namespace ApiFinanceira.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("CVVHash")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)");
-
                     b.Property<Guid>("ContaId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("NumeroCompleto")
+                    b.Property<string>("Cvv")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(3)
+                        .HasColumnType("character varying(3)");
 
-                    b.Property<int>("Type")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("UltimosQuatroDigitos")
+                    b.Property<string>("Number")
                         .IsRequired()
-                        .HasMaxLength(4)
-                        .HasColumnType("character varying(4)");
+                        .HasMaxLength(19)
+                        .HasColumnType("character varying(19)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -57,6 +55,9 @@ namespace ApiFinanceira.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ContaId");
+
+                    b.HasIndex("Number")
+                        .IsUnique();
 
                     b.ToTable("Cartoes");
                 });
@@ -87,7 +88,7 @@ namespace ApiFinanceira.Infrastructure.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<decimal>("Saldo")
-                        .HasColumnType("numeric(18,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -148,36 +149,31 @@ namespace ApiFinanceira.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Descricao")
+                    b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("character varying(500)");
+                        .HasColumnType("text");
 
-                    b.Property<Guid?>("ReceiverAccountId")
-                        .HasColumnType("uuid");
-
-                    b.Property<bool>("Revertida")
+                    b.Property<bool>("IsReverted")
                         .HasColumnType("boolean");
 
-                    b.Property<int>("Tipo")
-                        .HasColumnType("integer");
-
-                    b.Property<Guid?>("TransacaoOriginalId")
+                    b.Property<Guid?>("OriginalTransactionId")
                         .HasColumnType("uuid");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<decimal>("Valor")
-                        .HasColumnType("numeric(18,2)");
+                    b.Property<decimal>("Value")
+                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ContaId");
 
-                    b.HasIndex("ReceiverAccountId");
-
-                    b.HasIndex("TransacaoOriginalId");
+                    b.HasIndex("OriginalTransactionId");
 
                     b.ToTable("Transacoes");
                 });
@@ -206,26 +202,17 @@ namespace ApiFinanceira.Infrastructure.Migrations
 
             modelBuilder.Entity("ApiFinanceira.Domain.Entities.Transacao", b =>
                 {
-                    b.HasOne("ApiFinanceira.Domain.Entities.Conta", "Conta")
+                    b.HasOne("ApiFinanceira.Domain.Entities.Conta", null)
                         .WithMany("Transacoes")
                         .HasForeignKey("ContaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ApiFinanceira.Domain.Entities.Conta", "ReceiverAccount")
+                    b.HasOne("ApiFinanceira.Domain.Entities.Transacao", "OriginalTransaction")
                         .WithMany()
-                        .HasForeignKey("ReceiverAccountId");
+                        .HasForeignKey("OriginalTransactionId");
 
-                    b.HasOne("ApiFinanceira.Domain.Entities.Transacao", "TransacaoOriginal")
-                        .WithMany()
-                        .HasForeignKey("TransacaoOriginalId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("Conta");
-
-                    b.Navigation("ReceiverAccount");
-
-                    b.Navigation("TransacaoOriginal");
+                    b.Navigation("OriginalTransaction");
                 });
 
             modelBuilder.Entity("ApiFinanceira.Domain.Entities.Conta", b =>

@@ -14,7 +14,7 @@ namespace ApiFinanceira.Application.ExternalServices
         public string? Error { get; set; }
         public string? Reason { get; set; }
         public string? Message { get; set; }
-        public int Status { get; internal set; }
+        public int Status { get; set; }
     }
    
     public class ComplianceData

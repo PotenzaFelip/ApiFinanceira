@@ -58,7 +58,7 @@ namespace ApiFinanceira.Infrastructure.Data
                       .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasMany(c => c.Transacoes)
-                      .WithOne(t => t.Conta)
+                      .WithOne()
                       .HasForeignKey(t => t.ContaId)
                       .OnDelete(DeleteBehavior.Cascade);
             });
@@ -80,10 +80,6 @@ namespace ApiFinanceira.Infrastructure.Data
                       .OnDelete(DeleteBehavior.Cascade); 
             });
 
-            modelBuilder.Entity<Transacao>()
-                .HasOne(t => t.Conta)
-                .WithMany()
-                .HasForeignKey(t => t.ContaId);
 
             modelBuilder.Entity<Conta>()
                 .Property(c => c.Saldo)
