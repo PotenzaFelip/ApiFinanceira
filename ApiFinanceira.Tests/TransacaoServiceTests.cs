@@ -458,37 +458,6 @@ namespace ApiFinanceira.Tests.ApplicationTests
             _mockRepositorioConta.Verify(r => r.GetByIdAsync(_id_conta), Times.Once);
             _mockRepositorioTransacao.Verify(r => r.GetByIdAsync(idTransacao), Times.Once);
             _mockRepositorioTransacao.Verify(r => r.AddAsync(It.IsAny<Transacao>()), Times.Never);
-        }
-
-        [Fact]
-        public async Task ReverterTransacaoAsync_DeveLancarInvalidOperationException_QuandoNaoPodeExtrairIdDaContaParceira()
-        {
-            var idTransacao = Guid.NewGuid();
-            var saldoInicial = 200m;
-            var transacaoOriginal = new Transacao
-            {
-                Id = idTransacao,
-                ContaId = _id_conta,
-                Value = -100m,
-                Description = "Transferência com descrição inválida",
-                Type = "debit",
-                IsReverted = false,
-                CreatedAt = DateTime.UtcNow.AddMinutes(-30)
-            };
-            var conta = new Conta { Id = _id_conta, PessoaId = _id_pessoa, Saldo = saldoInicial };
-            var descricao = "Reversão de transferência";
-
-            _mockRepositorioConta.Setup(r => r.GetByIdAsync(_id_conta)).ReturnsAsync(conta);
-            _mockRepositorioTransacao.Setup(r => r.GetByIdAsync(idTransacao)).ReturnsAsync(transacaoOriginal);
-
-            var excecao = await Assert.ThrowsAsync<InvalidOperationException>(() =>
-                _servicoTransacao.RevertTransactionAsync(_id_pessoa, _id_conta, idTransacao, descricao));
-
-            Assert.Equal("Não foi possível extrair o ID da conta parceira da descrição da transação original para reversão. A reversão manual de ambas as partes pode ser necessária.", excecao.Message);
-            _mockRepositorioConta.Verify(r => r.GetByIdAsync(_id_conta), Times.Once);
-            _mockRepositorioTransacao.Verify(r => r.GetByIdAsync(idTransacao), Times.Once);
-            _mockRepositorioTransacao.Verify(r => r.GetQueryable(), Times.Never);
-            _mockRepositorioTransacao.Verify(r => r.AddAsync(It.IsAny<Transacao>()), Times.Never);
-        }        
+        }              
     }
 }

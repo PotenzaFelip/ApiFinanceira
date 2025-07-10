@@ -96,7 +96,7 @@ namespace ApiFinanceira.Application.Services
                 {
                     Id = c.Id,
                     Type = c.Type,
-                    Number = MaskLastFourDigits(c.Number),
+                    Number = c.Number,
                     Cvv = c.Cvv,
                     CreatedAt = c.CreatedAt,
                     UpdatedAt = c.UpdatedAt

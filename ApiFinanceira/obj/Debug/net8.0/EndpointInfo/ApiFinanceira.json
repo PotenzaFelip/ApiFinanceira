@@ -1078,6 +1078,10 @@
             "type": "string",
             "nullable": true
           },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"

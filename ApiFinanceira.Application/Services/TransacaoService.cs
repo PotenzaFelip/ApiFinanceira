@@ -195,15 +195,22 @@ namespace ApiFinanceira.Application.Services
             var reversalTransactions = new List<Transacao>();
             var accountsToUpdate = new List<Conta>();
 
-            if (originalTransaction.Type == "debit" || originalTransaction.Type == "credit")
-            {                
+            // Determinar se é uma transação de transferência (transfer_in ou transfer_out)
+            // ou uma transação simples (debit ou credit)
+            bool isTransferTransaction = originalTransaction.Type.Contains("transfer");
+
+            if (isTransferTransaction)
+            {
+                // Lógica existente para reverter transações de transferência interna (que envolvem duas contas)
                 Guid? partnerAccountId = null;
-                
+
+                // É importante que o formato da descrição para transferências seja consistente
+                // Ex: "Transferência para conta: [ID_DA_CONTA_PARCEIRA]" ou "Transferência de conta: [ID_DA_CONTA_PARCEIRA]"
                 var descriptionParts = originalTransaction.Description.Split(new[] { " para ", " de " }, StringSplitOptions.RemoveEmptyEntries);
 
                 if (descriptionParts.Length >= 2)
-                {                   
-                    var accountIdPart = descriptionParts[1];                    
+                {
+                    var accountIdPart = descriptionParts[1];
                     if (accountIdPart.Contains(":"))
                     {
                         accountIdPart = accountIdPart.Split(':')[0].Trim();
@@ -217,25 +224,27 @@ namespace ApiFinanceira.Application.Services
 
                 if (!partnerAccountId.HasValue)
                 {
-                    throw new InvalidOperationException("Não foi possível extrair o ID da conta parceira da descrição da transação original para reversão. A reversão manual de ambas as partes pode ser necessária.");
+                    // Melhorar a mensagem de erro para ser mais específica sobre o tipo de transação.
+                    throw new InvalidOperationException("Não foi possível extrair o ID da conta parceira da descrição da transação de transferência original para reversão. Por favor, verifique o formato da descrição.");
                 }
-               
+
+                // Buscar a transação relacionada na conta parceira
                 var relatedTransaction = await _transacaoRepository.GetQueryable()
                     .Where(t =>
                         t.ContaId == partnerAccountId.Value &&
-                        t.Value == -originalTransaction.Value &&
+                        t.Value == -originalTransaction.Value && // O valor da transação parceira deve ser o oposto
                         t.OriginalTransactionId == null &&
                         t.IsReverted == false &&
-                                                
-                        t.CreatedAt >= originalTransaction.CreatedAt.AddSeconds(-5) &&
-                        t.CreatedAt <= originalTransaction.CreatedAt.AddSeconds(5)
+                        // Aumentar a janela de tempo ou usar um TransactionGroupId/CorrelationId para maior robustez
+                        t.CreatedAt >= originalTransaction.CreatedAt.AddSeconds(-10) &&
+                        t.CreatedAt <= originalTransaction.CreatedAt.AddSeconds(10)
                     )
                     .OrderByDescending(t => t.CreatedAt)
                     .FirstOrDefaultAsync();
 
                 if (relatedTransaction == null)
                 {
-                    throw new InvalidOperationException("Não foi possível encontrar a transação parceira correspondente para a reversão da transferência interna. A reversão manual de ambas as partes pode ser necessária ou implementar um ID de relacionamento.");
+                    throw new InvalidOperationException("Não foi possível encontrar a transação parceira correspondente para a reversão da transferência interna. A reversão manual de ambas as partes pode ser necessária ou considere implementar um ID de relacionamento para transferências.");
                 }
 
                 var contaParceira = await _contaRepository.GetByIdAsync(relatedTransaction.ContaId);
@@ -243,11 +252,12 @@ namespace ApiFinanceira.Application.Services
                 {
                     throw new InvalidOperationException("Conta parceira da transferência não encontrada. Contate o suporte.");
                 }
-                
-                decimal reversalValueOriginal = -originalTransaction.Value;
-                string reversalTypeOriginal = originalTransaction.Type.Contains("in") ? "debit_reversal_transfer" : "credit_reversal_transfer";
 
-                if (reversalValueOriginal < 0 && (contaQuePediuReversao.Saldo + reversalValueOriginal) < 0)
+                // Reversão para a conta que pediu a reversão (conta original da transação de saída/entrada)
+                decimal reversalValueOriginal = -originalTransaction.Value; // O valor da reversão é o oposto
+                string reversalTypeOriginal = originalTransaction.Type.Contains("debit") ? "credit_reversal_transfer" : "debit_reversal_transfer"; // Tipo de reversão oposto ao original
+
+                if (contaQuePediuReversao.Saldo + reversalValueOriginal < 0) // Verifica saldo ANTES de aplicar
                 {
                     throw new InvalidOperationException($"Saldo insuficiente na conta {contaQuePediuReversao.Account} para reverter a transação de {originalTransaction.Type}.");
                 }
@@ -260,14 +270,16 @@ namespace ApiFinanceira.Application.Services
                     Value = reversalValueOriginal,
                     Description = $"Reversão da {originalTransaction.Type} original ({originalTransaction.Id}): {description}",
                     Type = reversalTypeOriginal,
-                    OriginalTransactionId = originalTransaction.Id
+                    OriginalTransactionId = originalTransaction.Id,
+                    CreatedAt = DateTime.UtcNow // Define a data de criação no momento da reversão
                 };
                 reversalTransactions.Add(reversalOriginal);
 
-                decimal reversalValueRelated = -relatedTransaction.Value;
-                string reversalTypeRelated = relatedTransaction.Type.Contains("in") ? "debit_reversal_transfer" : "credit_reversal_transfer";
+                // Reversão para a conta parceira
+                decimal reversalValueRelated = -relatedTransaction.Value; // O valor da reversão é o oposto
+                string reversalTypeRelated = relatedTransaction.Type.Contains("debit") ? "credit_reversal_transfer" : "debit_reversal_transfer";
 
-                if (reversalValueRelated < 0 && (contaParceira.Saldo + reversalValueRelated) < 0)
+                if (contaParceira.Saldo + reversalValueRelated < 0) // Verifica saldo ANTES de aplicar
                 {
                     throw new InvalidOperationException($"Saldo insuficiente na conta {contaParceira.Account} para reverter a transação parceira.");
                 }
@@ -280,34 +292,38 @@ namespace ApiFinanceira.Application.Services
                     Value = reversalValueRelated,
                     Description = $"Reversão da {relatedTransaction.Type} parceira ({relatedTransaction.Id}): {description}",
                     Type = reversalTypeRelated,
-                    OriginalTransactionId = relatedTransaction.Id
+                    OriginalTransactionId = relatedTransaction.Id,
+                    CreatedAt = DateTime.UtcNow // Define a data de criação no momento da reversão
                 };
                 reversalTransactions.Add(reversalRelated);
 
                 originalTransaction.IsReverted = true;
                 relatedTransaction.IsReverted = true;
-                await _transacaoRepository.UpdateAsync(relatedTransaction);
+                await _transacaoRepository.UpdateAsync(relatedTransaction); // Atualiza a transação relacionada
             }
-            else
+            else // Esta é a parte para transações simples (debit ou credit)
             {
                 decimal reversalValue;
                 string reversalType;
 
-                reversalValue = -originalTransaction.Value;
+                reversalValue = -originalTransaction.Value; // O valor da reversão é o oposto
 
                 if (originalTransaction.Type == "credit")
                 {
-                    reversalType = "debit_reversal";
+                    reversalType = "debit_reversal"; // Um crédito é revertido com um débito de reversão
                 }
                 else if (originalTransaction.Type == "debit")
                 {
-                    reversalType = "credit_reversal";
+                    reversalType = "credit_reversal"; // Um débito é revertido com um crédito de reversão
                 }
                 else
                 {
+                    // Caso caia aqui, significa que o Type da transação original não é 'debit', 'credit' nem 'transfer'
                     throw new InvalidOperationException("Tipo de transação original desconhecido para reversão.");
                 }
 
+                // Verifica o saldo antes de aplicar a reversão
+                // Se a reversão for um débito (reversalValue < 0), verifica se o saldo será suficiente
                 if (reversalValue < 0 && (contaQuePediuReversao.Saldo + reversalValue) < 0)
                 {
                     throw new InvalidOperationException("Saldo insuficiente para realizar a reversão desta transação.");
@@ -317,18 +333,21 @@ namespace ApiFinanceira.Application.Services
                 {
                     ContaId = accountId,
                     Value = reversalValue,
-                    Description = description,
+                    Description = $"Reversão de {originalTransaction.Type} ({originalTransaction.Id}): {description}", // Descrição mais clara para transações simples
                     Type = reversalType,
-                    OriginalTransactionId = originalTransaction.Id
+                    OriginalTransactionId = originalTransaction.Id,
+                    CreatedAt = DateTime.UtcNow // Define a data de criação no momento da reversão
                 };
                 reversalTransactions.Add(reversalSingle);
 
-                contaQuePediuReversao.Saldo += reversalValue;
+                contaQuePediuReversao.Saldo += reversalValue; // Aplica a reversão ao saldo
                 accountsToUpdate.Add(contaQuePediuReversao);
             }
 
+            // Marca a transação original como revertida, seja ela simples ou de transferência
             originalTransaction.IsReverted = true;
 
+            // Persiste todas as mudanças no banco de dados
             foreach (var transacao in reversalTransactions)
             {
                 await _transacaoRepository.AddAsync(transacao);
@@ -340,6 +359,7 @@ namespace ApiFinanceira.Application.Services
             }
             await _transacaoRepository.SaveChangesAsync();
 
+            // Retorna a primeira transação de reversão criada (a que reverte a transação original)
             return new TransacaoResponse
             {
                 Id = reversalTransactions.First().Id,
