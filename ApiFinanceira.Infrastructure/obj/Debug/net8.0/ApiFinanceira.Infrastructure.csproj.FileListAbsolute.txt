@@ -51,3 +51,5 @@ C:\Users\felip\OneDrive\Área de Trabalho\bb\ApiFinanceira\ApiFinanceira.Infrast
 C:\Users\felip\OneDrive\Área de Trabalho\bb\ApiFinanceira\ApiFinanceira.Infrastructure\obj\Debug\net8.0\ApiFinanceira.Infrastructure.pdb
 C:\Users\felip\OneDrive\Área de Trabalho\bb\ApiFinanceira\ApiFinanceira.Infrastructure\obj\Debug\net8.0\ApiFinanceira.Infrastructure.genruntimeconfig.cache
 C:\Users\felip\OneDrive\Área de Trabalho\bb\ApiFinanceira\ApiFinanceira.Infrastructure\obj\Debug\net8.0\ref\ApiFinanceira.Infrastructure.dll
+C:\Users\felip\OneDrive\Área de Trabalho\bb\ApiFinanceira\ApiFinanceira.Infrastructure\bin\Debug\net8.0\ApiFinanceira.Application.dll
+C:\Users\felip\OneDrive\Área de Trabalho\bb\ApiFinanceira\ApiFinanceira.Infrastructure\bin\Debug\net8.0\ApiFinanceira.Application.pdb
