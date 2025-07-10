@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36301.6 d17.14
+VisualStudioVersion = 17.14.36301.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiFinanceira", "ApiFinanceira.csproj", "{767A48D9-2D4E-4FE0-A188-1BF97B4C3525}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiFinanceira.Application", "..\ApiFinanceira.Application\ApiFinanceira.Application.csproj", "{62B517BE-B0C1-4540-8B8E-51390C864434}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiFinanceira.Infrastructure", "..\ApiFinanceira.Infrastructure\ApiFinanceira.Infrastructure.csproj", "{88CD8A5A-EC6F-4789-9D64-449056E193B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiFinanceira.Tests", "..\ApiFinanceira.Tests\ApiFinanceira.Tests.csproj", "{AC81E53D-803E-449E-A600-4C768052AD52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{88CD8A5A-EC6F-4789-9D64-449056E193B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88CD8A5A-EC6F-4789-9D64-449056E193B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88CD8A5A-EC6F-4789-9D64-449056E193B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC81E53D-803E-449E-A600-4C768052AD52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC81E53D-803E-449E-A600-4C768052AD52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC81E53D-803E-449E-A600-4C768052AD52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC81E53D-803E-449E-A600-4C768052AD52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
