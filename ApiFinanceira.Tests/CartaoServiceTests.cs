@@ -275,8 +275,8 @@ namespace ApiFinanceira.Tests.ApplicationTests
 
             Assert.NotNull(resultado);
             Assert.Equal(2, resultado.Count());
-            Assert.Contains(resultado, c => c.Type == "virtual" && c.Number == MascararUltimosQuatroDigitos("1111222233330001"));
-            Assert.Contains(resultado, c => c.Type == "physical" && c.Number == MascararUltimosQuatroDigitos("1111222233330002"));
+            Assert.Contains(resultado, c => c.Type == "virtual" && c.Number == "1111222233330001");
+            Assert.Contains(resultado, c => c.Type == "physical" && c.Number == "1111222233330002");
 
             _mockContaRepository.Verify(r => r.GetByIdAsync(contaId), Times.Once);
             _mockCartaoRepository.Verify(r => r.GetByContaIdAsync(contaId), Times.Once);
