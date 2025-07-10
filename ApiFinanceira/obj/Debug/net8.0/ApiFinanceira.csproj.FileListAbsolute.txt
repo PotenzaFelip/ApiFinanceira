@@ -456,3 +456,8 @@ C:\Users\felip\OneDrive\Área de Trabalho\bb\ApiFinanceira\ApiFinanceira\obj\Deb
 C:\Users\felip\OneDrive\Área de Trabalho\bb\ApiFinanceira\ApiFinanceira\obj\Debug\net8.0\ApiFinanceira.pdb
 C:\Users\felip\OneDrive\Área de Trabalho\bb\ApiFinanceira\ApiFinanceira\obj\Debug\net8.0\ApiFinanceira.genruntimeconfig.cache
 C:\Users\felip\OneDrive\Área de Trabalho\bb\ApiFinanceira\ApiFinanceira\obj\Debug\net8.0\ref\ApiFinanceira.dll
+C:\Users\felip\OneDrive\Área de Trabalho\bb\ApiFinanceira\ApiFinanceira\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.dll
+C:\Users\felip\OneDrive\Área de Trabalho\bb\ApiFinanceira\ApiFinanceira\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\Users\felip\OneDrive\Área de Trabalho\bb\ApiFinanceira\ApiFinanceira\bin\Debug\net8.0\Microsoft.Extensions.Http.dll
+C:\Users\felip\OneDrive\Área de Trabalho\bb\ApiFinanceira\ApiFinanceira\bin\Debug\net8.0\Refit.dll
+C:\Users\felip\OneDrive\Área de Trabalho\bb\ApiFinanceira\ApiFinanceira\bin\Debug\net8.0\Refit.HttpClientFactory.dll

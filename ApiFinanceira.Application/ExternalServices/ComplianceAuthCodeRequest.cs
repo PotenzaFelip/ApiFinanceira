@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApiFinanceira.Application.ExternalServices
 {
-    internal class ComplianceAuthCodeRequest
+    public class ComplianceAuthCodeRequest
     {
         public string Email { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;

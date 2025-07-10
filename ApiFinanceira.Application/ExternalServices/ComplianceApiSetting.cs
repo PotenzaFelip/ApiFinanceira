@@ -8,11 +8,8 @@ namespace ApiFinanceira.Application.ExternalServices
 {
     public class ComplianceApiSettings
     {
-        public string BaseUrlCpf { get; set; } = string.Empty;
-        public string BaseUrlCnpj { get; set; } = string.Empty;
-        public string AuthCodeUrl { get; set; } = string.Empty;
-        public string AuthTokenUrl { get; set; } = string.Empty;
         public string AuthEmail { get; set; } = string.Empty;
         public string AuthPassword { get; set; } = string.Empty;
+        
     }
 }

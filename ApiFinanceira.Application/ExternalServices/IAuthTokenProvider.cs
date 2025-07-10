@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ApiFinanceira.Application.ExternalServices
 {
-    public interface IComplianceService
+    public interface IAuthTokenProvider
     {
-        Task<ComplianceResponse?> ValidaDocumentComplianceAsync(string document, string documentType);
+        Task<string?> GetAccessTokenAsync();
+        void ClearAccessToken();
     }
 }
