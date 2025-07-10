@@ -50,7 +50,7 @@ namespace ApiFinanceira.Application.Services
             {
                 var complianceResponse = await _complianceService.ValidaDocumentComplianceAsync(cleanDocument, documentType);
 
-                if (complianceResponse == null || complianceResponse.Status != 1)
+                if (complianceResponse == null || complianceResponse.Data.Status != 1)
                 {
                     throw new InvalidOperationException($"Documento não aprovado pela API de Compliance. Status retornado: {complianceResponse?.Status ?? 0}. Mensagem: {complianceResponse?.Message ?? "N/A"}");
                 }

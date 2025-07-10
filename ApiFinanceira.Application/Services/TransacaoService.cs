@@ -89,7 +89,7 @@ namespace ApiFinanceira.Application.Services
             {
                 ContaId = senderAccountId,
                 Value = -request.Value,
-                Description = $"Transferência para {receiverAccount.Account}: {request.Description}",
+                Description = $"Transferência para {receiverAccount.Id}: {request.Description}",
                 Type = "debit"
             };
 
@@ -97,7 +97,7 @@ namespace ApiFinanceira.Application.Services
             {
                 ContaId = request.ReceiverAccountId,
                 Value = request.Value,
-                Description = $"Transferência de {senderAccount.Account}: {request.Description}",
+                Description = $"Transferência de {senderAccount.Id}: {request.Description}",
                 Type = "credit"
             };
 
@@ -193,24 +193,47 @@ namespace ApiFinanceira.Application.Services
             var reversalTransactions = new List<Transacao>();
             var accountsToUpdate = new List<Conta>();
 
-            if (originalTransaction.Type == "transfer_in" || originalTransaction.Type == "transfer_out")
-            {
+            if (originalTransaction.Type == "debit" || originalTransaction.Type == "credit")
+            {                
+                Guid? partnerAccountId = null;
+                
+                var descriptionParts = originalTransaction.Description.Split(new[] { " para ", " de " }, StringSplitOptions.RemoveEmptyEntries);
+
+                if (descriptionParts.Length >= 2)
+                {                   
+                    var accountIdPart = descriptionParts[1];                    
+                    if (accountIdPart.Contains(":"))
+                    {
+                        accountIdPart = accountIdPart.Split(':')[0].Trim();
+                    }
+
+                    if (Guid.TryParse(accountIdPart, out Guid parsedPartnerAccountId))
+                    {
+                        partnerAccountId = parsedPartnerAccountId;
+                    }
+                }
+
+                if (!partnerAccountId.HasValue)
+                {
+                    throw new InvalidOperationException("Não foi possível extrair o ID da conta parceira da descrição da transação original para reversão. A reversão manual de ambas as partes pode ser necessária.");
+                }
                
                 var relatedTransaction = await _transacaoRepository.GetQueryable()
                     .Where(t =>
+                        t.ContaId == partnerAccountId.Value &&
                         t.Value == -originalTransaction.Value &&
-                        t.Description.Contains("Transferência") &&
+                        t.OriginalTransactionId == null &&
+                        t.IsReverted == false &&
+                                                
                         t.CreatedAt >= originalTransaction.CreatedAt.AddSeconds(-5) &&
-                        t.CreatedAt <= originalTransaction.CreatedAt.AddSeconds(5) &&
-                        t.ContaId != originalTransaction.ContaId &&
-                        !t.IsReverted &&
-                        !t.OriginalTransactionId.HasValue
+                        t.CreatedAt <= originalTransaction.CreatedAt.AddSeconds(5)
                     )
+                    .OrderByDescending(t => t.CreatedAt)
                     .FirstOrDefaultAsync();
 
                 if (relatedTransaction == null)
                 {
-                    throw new InvalidOperationException("Não foi possível encontrar a transação parceira para a reversão da transferência interna. A reversão manual de ambas as partes pode ser necessária ou implementar um ID de relacionamento.");
+                    throw new InvalidOperationException("Não foi possível encontrar a transação parceira correspondente para a reversão da transferência interna. A reversão manual de ambas as partes pode ser necessária ou implementar um ID de relacionamento.");
                 }
 
                 var contaParceira = await _contaRepository.GetByIdAsync(relatedTransaction.ContaId);
@@ -218,9 +241,9 @@ namespace ApiFinanceira.Application.Services
                 {
                     throw new InvalidOperationException("Conta parceira da transferência não encontrada. Contate o suporte.");
                 }
-
-                var reversalValueOriginal = -originalTransaction.Value;
-                var reversalTypeOriginal = originalTransaction.Type.Contains("in") ? "debit_reversal_transfer" : "credit_reversal_transfer";
+                
+                decimal reversalValueOriginal = -originalTransaction.Value;
+                string reversalTypeOriginal = originalTransaction.Type.Contains("in") ? "debit_reversal_transfer" : "credit_reversal_transfer";
 
                 if (reversalValueOriginal < 0 && (contaQuePediuReversao.Saldo + reversalValueOriginal) < 0)
                 {
@@ -233,15 +256,14 @@ namespace ApiFinanceira.Application.Services
                 {
                     ContaId = contaQuePediuReversao.Id,
                     Value = reversalValueOriginal,
-                    Description = $"Reversão da {originalTransaction.Type} original: {description}",
+                    Description = $"Reversão da {originalTransaction.Type} original ({originalTransaction.Id}): {description}",
                     Type = reversalTypeOriginal,
                     OriginalTransactionId = originalTransaction.Id
                 };
                 reversalTransactions.Add(reversalOriginal);
 
-
-                var reversalValueRelated = -relatedTransaction.Value;
-                var reversalTypeRelated = relatedTransaction.Type.Contains("in") ? "debit_reversal_transfer" : "credit_reversal_transfer";
+                decimal reversalValueRelated = -relatedTransaction.Value;
+                string reversalTypeRelated = relatedTransaction.Type.Contains("in") ? "debit_reversal_transfer" : "credit_reversal_transfer";
 
                 if (reversalValueRelated < 0 && (contaParceira.Saldo + reversalValueRelated) < 0)
                 {
@@ -254,7 +276,7 @@ namespace ApiFinanceira.Application.Services
                 {
                     ContaId = contaParceira.Id,
                     Value = reversalValueRelated,
-                    Description = $"Reversão da {relatedTransaction.Type} parceira: {description}",
+                    Description = $"Reversão da {relatedTransaction.Type} parceira ({relatedTransaction.Id}): {description}",
                     Type = reversalTypeRelated,
                     OriginalTransactionId = relatedTransaction.Id
                 };
@@ -262,7 +284,7 @@ namespace ApiFinanceira.Application.Services
 
                 originalTransaction.IsReverted = true;
                 relatedTransaction.IsReverted = true;
-                _transacaoRepository.UpdateAsync(relatedTransaction);
+                await _transacaoRepository.UpdateAsync(relatedTransaction);
             }
             else
             {

@@ -823,8 +823,7 @@
           "number": {
             "maxLength": 19,
             "minLength": 16,
-            "type": "string",
-            "format": "credit-card"
+            "type": "string"
           },
           "cvv": {
             "maxLength": 3,

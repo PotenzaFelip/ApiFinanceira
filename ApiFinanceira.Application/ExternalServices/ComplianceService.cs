@@ -9,35 +9,82 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Net.Http.Json;
 
 namespace ApiFinanceira.Application.ExternalServices
 {
     public class ComplianceService : IComplianceService
     {
         private readonly HttpClient _httpClient;
-        private readonly ComplianceApiSettings _complianceApiSettings; 
-        private readonly string? _complianceApiAuthToken;
-        
-        public ComplianceService(HttpClient httpClient, IOptions<ComplianceApiSettings> complianceApiSettings, IConfiguration configuration)
+        private readonly ComplianceApiSettings _complianceApiSettings;
+        private string? _cachedAccessToken;
+        private DateTime _tokenExpiry;
+
+        public ComplianceService(HttpClient httpClient, IOptions<ComplianceApiSettings> complianceApiSettings)
         {
             _httpClient = httpClient;
             _complianceApiSettings = complianceApiSettings.Value;
-           
-            _complianceApiAuthToken = configuration["ExternalApis:ComplianceApi:AuthToken"];
-          
-            if (!string.IsNullOrEmpty(_complianceApiAuthToken))
-            {
-                _httpClient.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue("Bearer", _complianceApiAuthToken);
-            }
         }
-        
+
+        private async Task GenerateAndCacheAccessTokenAsync()
+        {           
+            var authCodeRequestUri = _complianceApiSettings.AuthCodeUrl;
+            var authCodeRequestBody = new ComplianceAuthCodeRequest
+            {
+                Email = _complianceApiSettings.AuthEmail,
+                Password = _complianceApiSettings.AuthPassword
+            };
+
+            var authCodeResponse = await _httpClient.PostAsJsonAsync(authCodeRequestUri, authCodeRequestBody);
+
+            if (!authCodeResponse.IsSuccessStatusCode)
+            {
+                var errorContent = await authCodeResponse.Content.ReadAsStringAsync();               
+                throw new HttpRequestException($"Falha ao obter AuthCode da API de Compliance. Status: {authCodeResponse.StatusCode}. Detalhes: {errorContent}");
+            }
+
+            var authCodeResult = await authCodeResponse.Content.ReadFromJsonAsync<ComplianceAuthCodeResponse>();
+            if (authCodeResult?.Data == null || !authCodeResult.Success || string.IsNullOrEmpty(authCodeResult.Data.AuthCode))
+            {
+                throw new InvalidOperationException($"[ComplianceService] Resposta inválida ao obter AuthCode: {JsonSerializer.Serialize(authCodeResult)}");
+            }
+            
+            var authTokenRequestUri = _complianceApiSettings.AuthTokenUrl;
+            var tokenRequest = new ComplianceTokenRequest
+            {
+                AuthCode = authCodeResult.Data.AuthCode
+            };
+
+            var tokenResponse = await _httpClient.PostAsJsonAsync(authTokenRequestUri, tokenRequest);
+
+            if (!tokenResponse.IsSuccessStatusCode)
+            {
+                var errorContent = await tokenResponse.Content.ReadAsStringAsync();                
+                throw new HttpRequestException($"Falha ao obter AccessToken da API de Compliance. Status: {tokenResponse.StatusCode}. Detalhes: {errorContent}");
+            }
+
+            var tokenResult = await tokenResponse.Content.ReadFromJsonAsync<ComplianceTokenResponse>();
+            if (tokenResult?.Data == null || !tokenResult.Success || string.IsNullOrEmpty(tokenResult.Data.AccessToken))
+            {
+                throw new InvalidOperationException($"[ComplianceService] Resposta inválida ao obter AccessToken: {JsonSerializer.Serialize(tokenResult)}");
+            }
+
+            _cachedAccessToken = tokenResult.Data.AccessToken;
+            _tokenExpiry = DateTime.UtcNow.AddSeconds(tokenResult.Data.ExpiresIn - 60);            
+        }
+
+
         public async Task<ComplianceResponse?> ValidaDocumentComplianceAsync(string document, string documentType)
         {
+            if (string.IsNullOrEmpty(_cachedAccessToken) || _tokenExpiry <= DateTime.UtcNow)
+            {
+                await GenerateAndCacheAccessTokenAsync();
+            }
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _cachedAccessToken);
+
             var request = new ComplianceRequest { Document = document };
 
             string requestUri;
-            
             if (documentType.Equals("cpf", StringComparison.OrdinalIgnoreCase))
             {
                 requestUri = _complianceApiSettings.BaseUrlCpf;
@@ -52,63 +99,77 @@ namespace ApiFinanceira.Application.ExternalServices
             }
 
             try
-            {                
+            {
                 var response = await _httpClient.PostAsJsonAsync(requestUri, request);
-                var responseContent = await response.Content.ReadAsStringAsync();
+                var responseContent = await response.Content.ReadAsStringAsync();              
 
-                Console.WriteLine($"[ComplianceService] Status Code da Resposta ({requestUri}): {response.StatusCode}");
-                Console.WriteLine($"[ComplianceService] Conteúdo Bruto da Resposta ({requestUri}): {responseContent}");
+                var complianceApiResult = JsonSerializer.Deserialize<ComplianceResponse>(responseContent, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
-                if (response.StatusCode == HttpStatusCode.Unauthorized)
+                if (complianceApiResult == null)
                 {
-                    try
+                    return new ComplianceResponse { Error = "Resposta vazia ou inválida da API de Compliance.", Success = false };
+                }
+
+                if (response.IsSuccessStatusCode)
+                {
+                    if (complianceApiResult.Success && complianceApiResult.Data != null)
                     {
-                        var errorResponse = JsonSerializer.Deserialize<ComplianceResponse>(responseContent, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-                        if (errorResponse != null && !string.IsNullOrEmpty(errorResponse.Error) && errorResponse.Error.Contains("Missing authorization header"))
-                        {
-                            return new ComplianceResponse { Status = -1, Message = "Erro de autenticação: Token de autorização ausente ou inválido." };
-                        }
-                    }
-                    catch (JsonException) {}
-                    return new ComplianceResponse { Status = -1, Message = $"Erro de autenticação (401): {responseContent}" };
-                }
 
-                if (!response.IsSuccessStatusCode)
-                {
-                    try
+                        return new ComplianceResponse
+                        {
+                            Success = true,
+                            Data = complianceApiResult.Data,
+                        };
+                    }
+                    else if (!complianceApiResult.Success && !string.IsNullOrEmpty(complianceApiResult.Error))
                     {
-                        var errorResponse = JsonSerializer.Deserialize<ComplianceResponse>(responseContent, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-                        if (errorResponse != null && (!string.IsNullOrEmpty(errorResponse.Reason) || !string.IsNullOrEmpty(errorResponse.Message)))
+                        return new ComplianceResponse
                         {
-                            return new ComplianceResponse { Status = errorResponse.Status, Message = errorResponse.Reason ?? errorResponse.Message ?? $"Erro desconhecido ({response.StatusCode})." };
-                        }
+                            Success = false,
+                            Error = complianceApiResult.Error,
+                            Reason = complianceApiResult.Reason,
+                            Message = $"Falha na validação do documento: {complianceApiResult.Error}"
+                        };
                     }
-                    catch (JsonException) {}
-                    return new ComplianceResponse { Status = -1, Message = $"Erro na API de Compliance: {response.StatusCode} - {responseContent}" };
+                    else
+                    {
+                        return new ComplianceResponse
+                        {
+                            Success = false,
+                            Error = "Formato de sucesso inesperado da API de Compliance.",
+                            Message = $"API de Compliance retornou 200 OK com formato de dados desconhecido: {responseContent}"
+                        };
+                    }
                 }
-
-                var complianceResult = await response.Content.ReadFromJsonAsync<ComplianceResponse>();
-                if (complianceResult == null)
+                else
                 {
-                    return new ComplianceResponse { Status = -1, Message = "Resposta vazia ou inválida da API de Compliance." };
-                }
+                    if (response.StatusCode == HttpStatusCode.Unauthorized)
+                    {
+                        _cachedAccessToken = null;
+                        _tokenExpiry = DateTime.MinValue;
+                        return new ComplianceResponse { Success = false, Error = complianceApiResult.Error ?? "Autenticação falhou.", Message = $"Erro de autenticação (401): {responseContent}" };
+                    }
 
-                return complianceResult;
+                    return new ComplianceResponse
+                    {
+                        Success = false,
+                        Error = complianceApiResult.Error ?? $"Erro na API de Compliance: {response.StatusCode}",
+                        Reason = complianceApiResult.Reason,
+                        Message = $"API de Compliance retornou {response.StatusCode} - {response.ReasonPhrase}. Detalhes: {complianceApiResult.Error ?? responseContent}"
+                    };
+                }
             }
             catch (HttpRequestException ex)
-            {
-                Console.WriteLine($"Erro de requisição HTTP ao chamar a API de Compliance ({requestUri}): {ex.Message}");
-                return new ComplianceResponse { Status = -1, Message = $"Falha de conexão com a API de Compliance: {ex.Message}" };
+            {                
+                return new ComplianceResponse { Success = false, Error = ex.Message, Message = $"Falha de conexão com a API de Compliance: {ex.Message}" };
             }
             catch (JsonException ex)
-            {
-                Console.WriteLine($"Erro de JSON ao desserializar a resposta da API de Compliance ({requestUri}): {ex.Message}. Conteúdo recebido:");
-                return new ComplianceResponse { Status = -1, Message = $"Resposta da API de Compliance não é um JSON válido. Erro: {ex.Message}" };
+            {               
+                return new ComplianceResponse { Success = false, Error = ex.Message, Message = $"Resposta da API de Compliance não é um JSON válido. Erro: {ex.Message}" };
             }
             catch (Exception ex)
-            {
-                Console.WriteLine($"Um erro inesperado ocorreu ao chamar a API de Compliance ({requestUri}): {ex.Message}");
-                return new ComplianceResponse { Status = -1, Message = $"Erro inesperado ao verificar compliance: {ex.Message}" };
+            {               
+                return new ComplianceResponse { Success = false, Error = ex.Message, Message = $"Erro inesperado ao verificar compliance: {ex.Message}" };
             }
         }
     }
