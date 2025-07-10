@@ -54,11 +54,11 @@ git clone [URL_DO_SEU_REPOSITORIO]
 cd [NomeDaPastaDoSeuRepositorio]
 ```
 ### 2. Configuração do Banco de Dados PostgreSQL
-## a. Crie um Banco de Dados:
+## Crie um Banco de Dados:
 Abra seu cliente PostgreSQL (pgAdmin, DBeaver, ou via psql) e crie um novo banco de dados.
 Nome Sugerido: ApiFinanceiraDb
 
-## b. Atualize a String de Conexão:
+## Atualize a String de Conexão:
 Navegue até o projeto ApiFinanceira.Api e abra o arquivo appsettings.json.
 Atualize a string de conexão DefaultConnection com as credenciais do seu banco de dados PostgreSQL.
 
@@ -72,7 +72,7 @@ Atualize a string de conexão DefaultConnection com as credenciais do seu banco 
 ```
 Importante: Substitua seu_usuario e sua_senha pelas suas credenciais do PostgreSQL.
 
-## c. Aplicar Migrações do Entity Framework Core:
+## Aplicar Migrações do Entity Framework Core:
 Abra o Package Manager Console no Visual Studio (View > Other Windows > Package Manager Console).
 
 Defina o Default project para ApiFinanceira.Infrastructure.
