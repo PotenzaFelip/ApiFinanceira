@@ -14,7 +14,7 @@ namespace ApiFinanceira.Application.DTOs.Requests
         public string Type { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "O número do cartão é obrigatório.")]
-        [CreditCard(ErrorMessage = "O número do cartão não é válido.")]
+        //[CreditCard(ErrorMessage = "O número do cartão não é válido.")]
         [StringLength(19, MinimumLength = 16, ErrorMessage = "O número do cartão deve ter entre 16 e 19 dígitos (incluindo espaços).")]
         public string Number { get; set; } = string.Empty;
 

@@ -27,8 +27,7 @@ namespace ApiFinanceira.Application.ExternalServices
         }
 
         private async Task GenerateAndCacheAccessTokenAsync()
-        {
-            Console.WriteLine("[ComplianceService] Solicitando novo AuthCode com email/senha...");
+        {           
             var authCodeRequestUri = _complianceApiSettings.AuthCodeUrl;
             var authCodeRequestBody = new ComplianceAuthCodeRequest
             {
@@ -40,8 +39,7 @@ namespace ApiFinanceira.Application.ExternalServices
 
             if (!authCodeResponse.IsSuccessStatusCode)
             {
-                var errorContent = await authCodeResponse.Content.ReadAsStringAsync();
-                Console.Error.WriteLine($"[ComplianceService] Erro ao obter AuthCode: {authCodeResponse.StatusCode} - {errorContent}");
+                var errorContent = await authCodeResponse.Content.ReadAsStringAsync();               
                 throw new HttpRequestException($"Falha ao obter AuthCode da API de Compliance. Status: {authCodeResponse.StatusCode}. Detalhes: {errorContent}");
             }
 
@@ -50,10 +48,7 @@ namespace ApiFinanceira.Application.ExternalServices
             {
                 throw new InvalidOperationException($"[ComplianceService] Resposta inválida ao obter AuthCode: {JsonSerializer.Serialize(authCodeResult)}");
             }
-
-            Console.WriteLine($"[ComplianceService] AuthCode obtido: {authCodeResult.Data.AuthCode}");
-
-            Console.WriteLine("[ComplianceService] Solicitando AccessToken com AuthCode...");
+            
             var authTokenRequestUri = _complianceApiSettings.AuthTokenUrl;
             var tokenRequest = new ComplianceTokenRequest
             {
@@ -64,8 +59,7 @@ namespace ApiFinanceira.Application.ExternalServices
 
             if (!tokenResponse.IsSuccessStatusCode)
             {
-                var errorContent = await tokenResponse.Content.ReadAsStringAsync();
-                Console.Error.WriteLine($"[ComplianceService] Erro ao obter AccessToken: {tokenResponse.StatusCode} - {errorContent}");
+                var errorContent = await tokenResponse.Content.ReadAsStringAsync();                
                 throw new HttpRequestException($"Falha ao obter AccessToken da API de Compliance. Status: {tokenResponse.StatusCode}. Detalhes: {errorContent}");
             }
 
@@ -76,8 +70,7 @@ namespace ApiFinanceira.Application.ExternalServices
             }
 
             _cachedAccessToken = tokenResult.Data.AccessToken;
-            _tokenExpiry = DateTime.UtcNow.AddSeconds(tokenResult.Data.ExpiresIn - 60);
-            Console.WriteLine($"[ComplianceService] AccessToken obtido. Expira em: {_tokenExpiry.ToLocalTime()}");
+            _tokenExpiry = DateTime.UtcNow.AddSeconds(tokenResult.Data.ExpiresIn - 60);            
         }
 
 
@@ -108,10 +101,7 @@ namespace ApiFinanceira.Application.ExternalServices
             try
             {
                 var response = await _httpClient.PostAsJsonAsync(requestUri, request);
-                var responseContent = await response.Content.ReadAsStringAsync();
-
-                Console.WriteLine($"[ComplianceService] Status Code da Resposta ({requestUri}): {response.StatusCode}");
-                Console.WriteLine($"[ComplianceService] Conteúdo Bruto da Resposta ({requestUri}): {responseContent}");
+                var responseContent = await response.Content.ReadAsStringAsync();              
 
                 var complianceApiResult = JsonSerializer.Deserialize<ComplianceResponse>(responseContent, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
@@ -170,18 +160,15 @@ namespace ApiFinanceira.Application.ExternalServices
                 }
             }
             catch (HttpRequestException ex)
-            {
-                Console.WriteLine($"Erro de requisição HTTP ao chamar a API de Compliance ({requestUri}): {ex.Message}");
+            {                
                 return new ComplianceResponse { Success = false, Error = ex.Message, Message = $"Falha de conexão com a API de Compliance: {ex.Message}" };
             }
             catch (JsonException ex)
-            {
-                Console.WriteLine($"Erro de JSON ao desserializar a resposta da API de Compliance ({requestUri}): {ex.Message}. Conteúdo recebido:");
+            {               
                 return new ComplianceResponse { Success = false, Error = ex.Message, Message = $"Resposta da API de Compliance não é um JSON válido. Erro: {ex.Message}" };
             }
             catch (Exception ex)
-            {
-                Console.WriteLine($"Um erro inesperado ocorreu ao chamar a API de Compliance ({requestUri}): {ex.Message}");
+            {               
                 return new ComplianceResponse { Success = false, Error = ex.Message, Message = $"Erro inesperado ao verificar compliance: {ex.Message}" };
             }
         }
