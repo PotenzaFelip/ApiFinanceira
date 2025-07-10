@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\bb\\ApiFinanceira\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj": {}
+    "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj": {}
   },
   "projects": {
-    "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\bb\\ApiFinanceira\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj": {
+    "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\bb\\ApiFinanceira\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj",
+        "projectUniqueName": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj",
         "projectName": "ApiFinanceira.Application",
-        "projectPath": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\bb\\ApiFinanceira\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj",
+        "projectPath": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\ApiFinanceira.Application.csproj",
         "packagesPath": "C:\\Users\\felip\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\bb\\ApiFinanceira\\ApiFinanceira.Application\\obj\\",
+        "outputPath": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\bb\\ApiFinanceira\\ApiFinanceira.Domain\\ApiFinanceira.Domain.csproj": {
-                "projectPath": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\bb\\ApiFinanceira\\ApiFinanceira.Domain\\ApiFinanceira.Domain.csproj"
+              "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\ApiFinanceira.Domain.csproj": {
+                "projectPath": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\ApiFinanceira.Domain.csproj"
               }
             }
           }
@@ -95,14 +95,14 @@
         }
       }
     },
-    "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\bb\\ApiFinanceira\\ApiFinanceira.Domain\\ApiFinanceira.Domain.csproj": {
+    "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\ApiFinanceira.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\bb\\ApiFinanceira\\ApiFinanceira.Domain\\ApiFinanceira.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\ApiFinanceira.Domain.csproj",
         "projectName": "ApiFinanceira.Domain",
-        "projectPath": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\bb\\ApiFinanceira\\ApiFinanceira.Domain\\ApiFinanceira.Domain.csproj",
+        "projectPath": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\ApiFinanceira.Domain.csproj",
         "packagesPath": "C:\\Users\\felip\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\bb\\ApiFinanceira\\ApiFinanceira.Domain\\obj\\",
+        "outputPath": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\aa\\ApiFinanceira\\ApiFinanceira.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

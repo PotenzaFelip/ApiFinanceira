@@ -3,6 +3,7 @@ using System;
 using ApiFinanceira.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ApiFinanceira.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250710133700_Initial_commit")]
+    partial class Initial_commit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -146,6 +149,9 @@ namespace ApiFinanceira.Infrastructure.Migrations
                     b.Property<Guid>("ContaId")
                         .HasColumnType("uuid");
 
+                    b.Property<Guid?>("ContaId1")
+                        .HasColumnType("uuid");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
@@ -157,6 +163,9 @@ namespace ApiFinanceira.Infrastructure.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<Guid?>("OriginalTransactionId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("RelatedTransactionId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Type")
@@ -172,6 +181,8 @@ namespace ApiFinanceira.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ContaId");
+
+                    b.HasIndex("ContaId1");
 
                     b.HasIndex("OriginalTransactionId");
 
@@ -202,15 +213,21 @@ namespace ApiFinanceira.Infrastructure.Migrations
 
             modelBuilder.Entity("ApiFinanceira.Domain.Entities.Transacao", b =>
                 {
-                    b.HasOne("ApiFinanceira.Domain.Entities.Conta", null)
-                        .WithMany("Transacoes")
+                    b.HasOne("ApiFinanceira.Domain.Entities.Conta", "Conta")
+                        .WithMany()
                         .HasForeignKey("ContaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ApiFinanceira.Domain.Entities.Conta", null)
+                        .WithMany("Transacoes")
+                        .HasForeignKey("ContaId1");
+
                     b.HasOne("ApiFinanceira.Domain.Entities.Transacao", "OriginalTransaction")
                         .WithMany()
                         .HasForeignKey("OriginalTransactionId");
+
+                    b.Navigation("Conta");
 
                     b.Navigation("OriginalTransaction");
                 });
