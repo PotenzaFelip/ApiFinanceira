@@ -194,9 +194,7 @@ namespace ApiFinanceira.Application.Services
 
             var reversalTransactions = new List<Transacao>();
             var accountsToUpdate = new List<Conta>();
-            bool isTransferTransaction = originalTransaction.Type.Contains("debit") || 
-                                         originalTransaction.Type.Contains("credit") &&
-                                         originalTransaction.Description.Contains("Transferência para ") ||
+            bool isTransferTransaction = originalTransaction.Description.Contains("Transferência para ") ||
                                          originalTransaction.Description.Contains("Transferência de");
 
             if (isTransferTransaction)
